@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+Sitemap: https://www.mhdalif.id/sitemap.xml
