@@ -1,9 +1,8 @@
 name: '🚀 Deploy'
 
 on:
-  # Manual trigger — deploy langsung via workflow_dispatch.
-  # Push ke main TIDAK auto-deploy; gunakan Actions → Deploy → Run workflow
-  # untuk kontrol penuh. Tidak ada nilai env yang di-commit.
+  push:
+    branches: [main]
   workflow_dispatch:
 
 # Semua konfigurasi dari GitHub Secrets
