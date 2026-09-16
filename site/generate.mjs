@@ -43,20 +43,28 @@ const img = (name) => new URL('images/' + name, STATIC).pathname
 await sharp(img('avatar.webp')).toFile(new URL('assets/avatar.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
-// OG image — full fill max: giant text left, massive avatar right
+// OG image — professional card: vertical accent, structured text, big avatar
 const ogW = 1200, ogH = 630
-const avS = 630, textX = 36
+const avS = 580, aL = ogW - avS - 25
+const tx = 56
 const svg = `<svg width="${ogW}" height="${ogH}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1e1f1b"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient>
   </defs>
   <rect width="${ogW}" height="${ogH}" fill="url(#g)"/>
-  <text x="${textX}" y="280" font-family="Georgia,serif" font-size="96" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
-  <text x="${textX}" y="355" font-family="monospace" font-size="26" fill="#96998f" letter-spacing="1.5">Full-Stack &amp; DevOps Engineer</text>
-  <text x="${textX}" y="395" font-family="monospace" font-size="15" fill="#6f716a">Banten, Indonesia</text>
+  <!-- accent vertical line -->
+  <rect x="${tx}" y="200" width="3" height="230" rx="1.5" fill="#d8ff4f"/>
+  <!-- name -->
+  <text x="${tx + 22}" y="305" font-family="Georgia,serif" font-size="82" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
+  <!-- divider -->
+  <line x1="${tx + 22}" y1="335" x2="540" y2="335" stroke="#30322d" stroke-width="1"/>
+  <!-- title -->
+  <text x="${tx + 22}" y="375" font-family="monospace" font-size="20" fill="#96998f" letter-spacing="1">Full-Stack &amp; DevOps Engineer</text>
+  <!-- location + company -->
+  <text x="${tx + 22}" y="410" font-family="monospace" font-size="13" fill="#6f716a">Banten, Indonesia · Banten IT Solutions</text>
 </svg>`
 await sharp(Buffer.from(svg))
-  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: 0, left: ogW - avS }])
+  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: (ogH - avS) / 2, left: aL }])
   .webp()
   .toFile(new URL('assets/og.webp', PUBLIC).pathname)
 // client js
