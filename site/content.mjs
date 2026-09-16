@@ -56,17 +56,17 @@ export const CATEGORIES = {
 // tools shown in the dock (home). `inv` adds an invert class in light/dark mode.
 export const TOOLS = [
   { n: 'VS Code', f: 'vscode.svg', inv: '' },
-  { n: 'Cursor', f: 'cursor.svg', inv: 'invert-in-light' },
+  { n: 'Cursor', f: 'cursor.svg', inv: 'invert-in-dark' },
   { n: 'Claude Code', f: 'claude-code.svg', inv: '' },
   { n: 'Hermes Agent', f: 'hermes-agent.svg', inv: 'invert-in-dark' },
-  { n: 'Docker', f: 'docker.svg', inv: 'invert-in-dark' },
+  { n: 'Docker', f: 'docker.svg', inv: '' },
   { n: 'Figma', f: 'figma.svg', inv: '' },
-  { n: 'Notion', f: 'notion.svg', inv: 'invert-in-dark' },
+  { n: 'Notion', f: 'notion.svg', inv: '' },
   { n: 'Obsidian', f: 'obsidian.svg', inv: '' },
   { n: 'Termius', f: 'termius.svg', inv: 'invert-in-dark' },
   { n: 'Brave', f: 'brave-origin.svg', inv: '' },
   { n: 'Codex', f: 'codex.svg', inv: 'invert-in-dark' },
-  { n: 'Kiro', f: 'kiro.svg', inv: 'invert-in-dark' },
+  { n: 'Kiro', f: 'kiro.svg', inv: '' },
   { n: 'Bitwarden', f: 'bitwarden.svg', inv: '' },
   { n: 'Discord', f: 'discord.svg', inv: '' },
 ]
