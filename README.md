@@ -42,7 +42,7 @@
 | **Language** | TypeScript                                    |
 | **Frontend** | Vanilla CSS + JS, Instrument Serif font       |
 | **Build**    | Node.js static site generator, Wrangler 4     |
-| **Tooling**  | Wrangler 4, npm                               |
+| **Tooling**  | pnpm, Wrangler 4                            |
 
 ---
 
@@ -82,22 +82,23 @@ BITS-Portfolio/
 ### Prerequisites
 
 - Node.js LTS (20+)
-- Wrangler 4 (`npm i -g wrangler` or use via `npx`)
+- pnpm (or npm)
+- Wrangler 4 (`pnpm add -g wrangler` or use via `npx`)
 
 ### Setup
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Generate static site
-npm run gen
+pnpm run gen
 
 # Start local dev server
-npm run dev
+pnpm run dev
 
 # Deploy to Cloudflare Workers
-npm run deploy
+pnpm run deploy
 ```
 
 ### Environment Variables
