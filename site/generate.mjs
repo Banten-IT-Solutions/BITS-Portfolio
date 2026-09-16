@@ -43,18 +43,24 @@ const img = (name) => new URL('images/' + name, STATIC).pathname
 await sharp(img('avatar.webp')).toFile(new URL('assets/avatar.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
-// OG image — name/title left, avatar right
+// OG image — kartu nama style: compact, text left, avatar right
 const ogW = 1200, ogH = 630
-const avS = 320, aP = 48
+const avS = 280, avPad = 55
+const textX = 60
 const svg = `<svg width="${ogW}" height="${ogH}" xmlns="http://www.w3.org/2000/svg">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2b2c26"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient></defs>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2b2c26"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient>
+  </defs>
   <rect width="${ogW}" height="${ogH}" fill="url(#g)"/>
-  <text x="${aP}" y="280" font-family="Georgia,serif" font-size="52" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
-  <text x="${aP}" y="334" font-family="monospace" font-size="18" fill="#96998f">Full-Stack &amp; DevOps Engineer</text>
-  <text x="${aP}" y="368" font-family="monospace" font-size="13" fill="#6f716a">Banten, Indonesia · Banten IT Solutions</text>
+  <line x1="${textX}" y1="390" x2="635" y2="390" stroke="#30322d" stroke-width="1"/>
+  <text x="${textX}" y="245" font-family="Georgia,serif" font-size="56" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
+  <text x="${textX}" y="295" font-family="monospace" font-size="17" fill="#96998f">Full-Stack &amp; DevOps Engineer</text>
+  <text x="${textX}" y="325" font-family="monospace" font-size="13" fill="#6f716a">Banten, Indonesia</text>
+  <text x="${textX}" y="425" font-family="monospace" font-size="11" fill="#6f716a">github.com/bitscoid</text>
+  <text x="${textX}" y="445" font-family="monospace" font-size="11" fill="#6f716a">bits.co.id</text>
 </svg>`
 await sharp(Buffer.from(svg))
-  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: (ogH - avS) / 2, left: ogW - avS - aP }])
+  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: (ogH - avS) / 2, left: ogW - avS - avPad }])
   .webp()
   .toFile(new URL('assets/og.webp', PUBLIC).pathname)
 // client js
