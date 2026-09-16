@@ -1,6 +1,6 @@
 // Nurul Imam — build pipeline. Run: `node site/generate.mjs`
 // Copies static assets into public/, then writes every page + feed.
-import { mkdirSync, writeFileSync, copyFileSync, rmSync, readdirSync, statSync } from 'node:fs'
+import { mkdirSync, writeFileSync, copyFileSync, rmSync, readdirSync, statSync, watch } from 'node:fs'
 import { SITE, PROJECTS, ALL_POSTS } from './content.mjs'
 import { slug, cover } from './utils.mjs'
 import { page, home, about, projectsIndex, blogsIndex, projectDetail, blogDetail, rss, sitemap } from './templates.mjs'
@@ -24,7 +24,9 @@ function copyDir(src, dest) {
   }
 }
 
-rmSync(PUBLIC, { recursive: true, force: true })
+let FIRST = true
+function generate() {
+if (!FIRST) rmSync(PUBLIC, { recursive: true, force: true }); FIRST = false
 mkdirSync(new URL('assets/', PUBLIC), { recursive: true })
 
 // css
@@ -57,4 +59,21 @@ write('feed.xml', rss())
 write('sitemap.xml', sitemap())
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`)
 
-console.log(`Generated ${ALL_POSTS.length} posts, ${PROJECTS.length} projects.`)
+console.log(`Generated ${ALL_POSTS.length} posts, ${PROJECTS.length}.`)
+}
+
+// first run
+generate()
+
+// watch
+if (process.argv.includes('--watch')) {
+  const dirs = [SITEDIR.pathname, STATIC.pathname]
+  console.log('Watching site/ for changes...')
+  for (const dir of dirs) {
+    watch(dir, { recursive: true }, (_, fn) => {
+      if (fn?.startsWith('.')) return
+      console.log(`Change: ${fn}, regenerating...`)
+      try { generate() } catch (e) { console.error('Regen error:', e) }
+    })
+  }
+}
