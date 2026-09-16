@@ -6,6 +6,7 @@
 html.dark .theme-trigger .sun{display:inline}
 html.dark .theme-trigger .moon{display:none}
 footer{border-top:1px solid var(--line);margin-top:40px}
+.footer-social{flex-wrap:wrap}
 header.nav{background:var(--shell);border-bottom:1px solid var(--line)}
 :root{--font-sans:"Instrument Serif",Georgia,serif;--font-satoshi:"Instrument Serif",Georgia,serif;--font-display:"Instrument Serif",Georgia,serif}
 body,p{letter-spacing:.02em}

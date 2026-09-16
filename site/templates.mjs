@@ -55,8 +55,7 @@ function nav() {
 }
 
 function footer() {
-  const five = SOCIALS.filter((s) => ['github', 'instagram', 'linkedin', 'x', 'threads'].includes(s.key))
-  return `<footer><ul class="footer-social">${five.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noreferrer" aria-label="${esc(s.label)}" style="--mark:url(/assets/platform/${s.key}.svg)"></a></li>`).join('')}</ul></footer>`
+  return `<footer><ul class="footer-social">${SOCIALS.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noreferrer" aria-label="${esc(s.label)}" style="--mark:url(/assets/platform/${s.key}.svg)"></a></li>`).join('')}</ul></footer>`
 }
 
 export function page(title, desc, path, body, img) {
