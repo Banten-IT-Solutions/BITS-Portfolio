@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev --ip 0.0.0.0",
+    "dev:all": "node site/dev.mjs",
     "gen": "node site/generate.mjs",
     "deploy": "node site/generate.mjs && wrangler deploy"
   },
