@@ -43,21 +43,20 @@ const img = (name) => new URL('images/' + name, STATIC).pathname
 await sharp(img('avatar.webp')).toFile(new URL('assets/avatar.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
-// OG image — large fill: text left fills column, avatar right fills height
+// OG image — full fill max: giant text left, massive avatar right
 const ogW = 1200, ogH = 630
-const avS = ogH, avPad = 0
-const textX = 48
+const avS = 630, textX = 36
 const svg = `<svg width="${ogW}" height="${ogH}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2b2c26"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1e1f1b"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient>
   </defs>
   <rect width="${ogW}" height="${ogH}" fill="url(#g)"/>
-  <text x="${textX}" y="275" font-family="Georgia,serif" font-size="76" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
-  <text x="${textX}" y="340" font-family="monospace" font-size="22" fill="#96998f" letter-spacing="1">Full-Stack &amp; DevOps Engineer</text>
-  <text x="${textX}" y="378" font-family="monospace" font-size="14" fill="#6f716a">Banten, Indonesia</text>
+  <text x="${textX}" y="280" font-family="Georgia,serif" font-size="96" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
+  <text x="${textX}" y="355" font-family="monospace" font-size="26" fill="#96998f" letter-spacing="1.5">Full-Stack &amp; DevOps Engineer</text>
+  <text x="${textX}" y="395" font-family="monospace" font-size="15" fill="#6f716a">Banten, Indonesia</text>
 </svg>`
 await sharp(Buffer.from(svg))
-  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: 0, left: ogW - avS - avPad }])
+  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: 0, left: ogW - avS }])
   .webp()
   .toFile(new URL('assets/og.webp', PUBLIC).pathname)
 // client js
