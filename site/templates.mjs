@@ -35,9 +35,9 @@ function head(title, desc, path, img) {
 <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/>
 <link rel="canonical" href="${esc(url)}"/>
 <link rel="alternate" type="application/rss+xml" href="${esc(SITE.baseUrl)}/feed.xml"/>
-<link rel="shortcut icon" href="/Assets/Alif - Metadata.webp"/>
-<link rel="icon" href="/Assets/Alif - Metadata.webp" type="image/webp"/>
-<link rel="apple-touch-icon" href="/Assets/Alif - Metadata.webp"/>
+<link rel="shortcut icon" href="/Assets/metadata.webp"/>
+<link rel="icon" href="/Assets/metadata.webp" type="image/webp"/>
+<link rel="apple-touch-icon" href="/Assets/metadata.webp"/>
 <meta property="og:title" content="${esc(title)}"/>
 <meta property="og:description" content="${esc(desc)}"/>
 <meta property="og:url" content="${esc(url)}"/>
@@ -61,7 +61,7 @@ function footer() {
 }
 
 export function page(title, desc, path, body, img) {
-  return head(title, desc, path, img || '/Assets/Alif - Social Preview Seamless.webp') + '\n<body>\n<main class="portfolio" id="top">\n' + nav() + '\n' + body + '\n' + footer() + '\n</main>\n<script src="/assets/lenis.min.js"></script>\n<script src="/assets/app.js"></script>\n<script type="module" src="/assets/motion.js"></script>\n</body>\n</html>\n'
+  return head(title, desc, path, img || '/Assets/og.webp') + '\n<body>\n<main class="portfolio" id="top">\n' + nav() + '\n' + body + '\n' + footer() + '\n</main>\n<script src="/assets/lenis.min.js"></script>\n<script src="/assets/app.js"></script>\n<script type="module" src="/assets/motion.js"></script>\n</body>\n</html>\n'
 }
 
 // ---------- cards ----------
@@ -88,7 +88,7 @@ function ticker() {
 }
 
 function hero() {
-  return `<section class="hero"><div class="hero-copy" data-motion="heroCopy"><h1 class="hero-name"><span><span data-motion="heroName">${esc(SITE.name)}</span></span></h1><p class="hero-role"><em>${esc(SITE.title)}</em> ${esc(SITE.tagline)}</p><div class="hero-actions"><a class="hero-action-button primary-action" href="https://wa.me/62819678048" target="_blank" rel="noreferrer">${I.msg}<span>Discuss a Project</span></a><a class="hero-action-button primary-action" href="/projects">${I.layers}<span>Explore Projects</span></a></div></div><div class="portrait-wrap" data-motion="portrait"><div class="portrait-stage"><div class="portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/Assets/Alif.webp"/></div></div></div></section>`
+  return `<section class="hero"><div class="hero-copy" data-motion="heroCopy"><h1 class="hero-name"><span><span data-motion="heroName">${esc(SITE.name)}</span></span></h1><p class="hero-role"><em>${esc(SITE.title)}</em> ${esc(SITE.tagline)}</p><div class="hero-actions"><a class="hero-action-button primary-action" href="https://wa.me/62819678048" target="_blank" rel="noreferrer">${I.msg}<span>Discuss a Project</span></a><a class="hero-action-button primary-action" href="/projects">${I.layers}<span>Explore Projects</span></a></div></div><div class="portrait-wrap" data-motion="portrait"><div class="portrait-stage"><div class="portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/Assets/avatar.webp"/></div></div></div></section>`
 }
 
 function githubGraph() {
@@ -138,7 +138,7 @@ export function blogDetail(x) {
 // ---------- about ----------
 export function about() {
   const cats = Object.entries(CATEGORIES)
-  return `<section class="about-page"><article class="about-hero" data-motion="heroCopy"><header class="about-hero-lead"><p class="about-eyebrow">About / Biography</p><div class="about-identity"><div class="about-portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/Assets/Alif-identity.webp"/></div><div><h1 class="about-title"><span><span>${esc(SITE.name)}</span></span></h1><p class="about-role">${esc(SITE.title)} based in ${esc(SITE.location)}.</p></div></div></header><div class="about-hero-copy"><p>I build things, publish most of them openly, and keep the record here. Full-stack and DevOps engineer running ${esc(SITE.company)} — software, cloud, networking, and open source.</p><p>This page is the longer version: what I work on, the stack I reach for, and how I think about building.</p></div></article>
+  return `<section class="about-page"><article class="about-hero" data-motion="heroCopy"><header class="about-hero-lead"><p class="about-eyebrow">About / Biography</p><div class="about-identity"><div class="about-portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/Assets/identity.webp"/></div><div><h1 class="about-title"><span><span>${esc(SITE.name)}</span></span></h1><p class="about-role">${esc(SITE.title)} based in ${esc(SITE.location)}.</p></div></div></header><div class="about-hero-copy"><p>I build things, publish most of them openly, and keep the record here. Full-stack and DevOps engineer running ${esc(SITE.company)} — software, cloud, networking, and open source.</p><p>This page is the longer version: what I work on, the stack I reach for, and how I think about building.</p></div></article>
 <section class="about-chapter about-build" data-motion="sectionHead"><header class="about-chapter-head"><div><p class="about-chapter-index">01 / What I Do</p><h2>Software, infrastructure, and networking — end to end.</h2></div></header><ul class="about-interest-grid">${cats.map(([k, label], i) => `<li><small>0${i + 1}</small><strong>${esc(label)}</strong><span>${esc(catDesc(k))}</span></li>`).join('')}</ul></section>
 <section class="about-chapter about-footprint" data-motion="sectionHead"><header class="about-chapter-head"><div><p class="about-chapter-index">02 / Stack</p><h2>The tools I keep coming back to.</h2></div></header><p class="about-prose">Hono and TypeScript on the edge, SvelteKit and Sanity for content, Go and the sing-box kernel for networking, Docker for self-hosted, and OpenWrt for routers. One worker and one database wherever the product fits — because a system you can understand end to end is a system you can actually ship.</p></section>
 <section class="about-chapter about-perspective" data-motion="sectionHead"><header class="about-chapter-head"><div><p class="about-chapter-index">03 / Digital Footprint</p><h2>A record of the work, not just a resumé.</h2></div></header><p class="about-prose">Work has a habit of disappearing into private repositories and old folders. This site keeps <a href="/projects">projects</a> and <a href="/blogs">writing</a> in one place I control, where they compound into a record of what I built.</p></section></section>`

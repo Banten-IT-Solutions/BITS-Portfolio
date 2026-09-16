@@ -55,20 +55,20 @@ export const CATEGORIES = {
 
 // tools shown in the dock (home). `inv` adds an invert class in light/dark mode.
 export const TOOLS = [
-  { n: 'VS Code', f: 'VSCode.svg', inv: '' },
-  { n: 'Cursor', f: 'Cursor.svg', inv: 'invert-in-light' },
-  { n: 'Claude Code', f: 'Claude Code.svg', inv: '' },
-  { n: 'Docker', f: 'Docker.svg', inv: 'invert-in-dark' },
-  { n: 'Figma', f: 'Figma.svg', inv: '' },
-  { n: 'Notion', f: 'Notion.svg', inv: 'invert-in-dark' },
-  { n: 'Obsidian', f: 'Obsidian.svg', inv: '' },
-  { n: 'Termius', f: 'Termius.svg', inv: 'invert-in-dark' },
-  { n: 'Brave', f: 'Brave Origin.svg', inv: '' },
-  { n: 'Codex', f: 'Codex.svg', inv: '' },
-  { n: 'Kiro', f: 'Kiro.svg', inv: 'invert-in-dark' },
-  { n: 'Bitwarden', f: 'Bitwarden.svg', inv: '' },
-  { n: 'Discord', f: 'Discord.svg', inv: '' },
-  { n: 'VSCode', f: 'VSCode.svg', inv: '' },
+  { n: 'VS Code', f: 'vscode.svg', inv: '' },
+  { n: 'Cursor', f: 'cursor.svg', inv: 'invert-in-light' },
+  { n: 'Claude Code', f: 'claude-code.svg', inv: '' },
+  { n: 'Docker', f: 'docker.svg', inv: 'invert-in-dark' },
+  { n: 'Figma', f: 'figma.svg', inv: '' },
+  { n: 'Notion', f: 'notion.svg', inv: 'invert-in-dark' },
+  { n: 'Obsidian', f: 'obsidian.svg', inv: '' },
+  { n: 'Termius', f: 'termius.svg', inv: 'invert-in-dark' },
+  { n: 'Brave', f: 'brave-origin.svg', inv: '' },
+  { n: 'Codex', f: 'codex.svg', inv: '' },
+  { n: 'Kiro', f: 'kiro.svg', inv: 'invert-in-dark' },
+  { n: 'Bitwarden', f: 'bitwarden.svg', inv: '' },
+  { n: 'Discord', f: 'discord.svg', inv: '' },
+  { n: 'VSCode', f: 'vscode.svg', inv: '' },
 ]
 
 export const PROJECTS = [
