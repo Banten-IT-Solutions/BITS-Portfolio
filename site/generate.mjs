@@ -37,11 +37,12 @@ copyDir(new URL('platform/', STATIC), new URL('assets/platform/', PUBLIC))
 copyDir(new URL('tools/', STATIC), new URL('assets/tools/', PUBLIC))
 copyDir(new URL('covers/', STATIC), new URL('assets/covers/', PUBLIC))
 copyFileSync(new URL('github.svg', STATIC), new URL('assets/github.svg', PUBLIC))
-// portrait/metadata/og images
+// portrait/identity/metadata/og — all derived from avatar
 copyFileSync(new URL('images/avatar.webp', STATIC), new URL('assets/avatar.webp', PUBLIC))
-copyFileSync(new URL('images/metadata.webp', STATIC), new URL('assets/metadata.webp', PUBLIC))
-copyFileSync(new URL('images/og.webp', STATIC), new URL('assets/og.webp', PUBLIC))
-copyFileSync(new URL('images/identity.webp', STATIC), new URL('assets/identity.webp', PUBLIC))
+const av = 'images/avatar.webp'
+copyFileSync(new URL(av, STATIC), new URL('assets/metadata.webp', PUBLIC))
+copyFileSync(new URL(av, STATIC), new URL('assets/og.webp', PUBLIC))
+copyFileSync(new URL(av, STATIC), new URL('assets/identity.webp', PUBLIC))
 // client js
 copyFileSync(new URL('app.js', SITEDIR), new URL('assets/app.js', PUBLIC))
 copyFileSync(new URL('motion.js', SITEDIR), new URL('assets/motion.js', PUBLIC))
