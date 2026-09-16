@@ -57,7 +57,7 @@ async function getContribs(): Promise<ContribResponse> {
 
     if (!res) {
       const upstream = await fetch(API_URL, {
-        headers: { 'user-agent': 'nurulimam-com worker' },
+        headers: { 'user-agent': 'bits-portfolio worker' },
         signal: AbortSignal.timeout(5000),
       })
       if (!upstream.ok) return { success: false, total: 0, weeks: [] }

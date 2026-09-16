@@ -1,12 +1,12 @@
 <div align="center">
-  <h1>nurulimam.com</h1>
+  <h1>BITS Portfolio</h1>
   <p>
-    <a href="https://nurulimam.com">
-      <img src="https://img.shields.io/badge/nurulimam.com-000000?style=for-the-badge&logo=cloudflare&logoColor=white" alt="nurulimam.com" />
+    <a href="https://bits.co.id">
+      <img src="https://img.shields.io/badge/bits.co.id-00C853?style=for-the-badge&logo=cloudflare&logoColor=white" alt="bits.co.id" />
     </a>
   </p>
   <p>
-    Personal portfolio & blog — a static site served from Hono on Cloudflare Workers with a GitHub contributions API.
+    <strong>Banten IT Solutions</strong> — Personal portfolio & blog served from Hono on Cloudflare Workers with a GitHub contributions API and static site generation.
   </p>
   <br>
   <p>
@@ -42,14 +42,14 @@
 | **Language** | TypeScript                                    |
 | **Frontend** | Vanilla CSS + JS, Instrument Serif font       |
 | **Build**    | Node.js static site generator, Wrangler 4     |
-| **Tooling**  | Wrangler 4, npm, Prettier (planned)           |
+| **Tooling**  | Wrangler 4, npm                               |
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-nurulimam.com/
+bits-portfolio/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml         # workflow_dispatch — generate + wrangler deploy
@@ -114,8 +114,8 @@ Set via GitHub Secrets → Settings → Secrets and variables → Actions.
 
 <div align="center">
   <p>
-    <a href="https://nurulimam.com">nurulimam.com</a> ·
-    <a href="https://github.com/bitscoid">@bitscoid</a>
+    <a href="https://bits.co.id">bits.co.id</a> ·
+    <a href="https://github.com/Banten-IT-Solutions">Banten IT Solutions</a>
   </p>
   <p>
     Built with ☕ and Cloudflare Workers

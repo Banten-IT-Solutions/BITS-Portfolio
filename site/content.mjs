@@ -9,13 +9,14 @@ export const SITE = {
   location: 'Banten, Indonesia',
   company: 'Banten IT Solutions',
   website: 'https://bits.co.id',
+  companyUrl: 'https://bits.co.id',
   email: 'nurulimamstudio@gmail.com',
   github: 'https://github.com/bitscoid',
   description:
     'Nurul Imam — Full-Stack & DevOps Engineer from Banten, Indonesia. Building web apps, cloud platforms, OpenWrt router firmware, VPN tooling, QRIS payments, and open-source software.',
   keywords:
     'Nurul Imam, full-stack engineer, DevOps engineer, software engineer, cloud engineer, Indonesia, Banten IT Solutions, open source',
-  baseUrl: 'https://nurulimam.com',
+  baseUrl: 'https://bits.co.id',
   author: 'Nurul Imam',
   marquee: [
     'Product engineering',
@@ -106,9 +107,9 @@ export const PROJECTS = [
     topics: ['blog', 'typescript'], homepage: 'https://malesngoding.my.id', category: 'web',
   },
   {
-    name: 'nurulimam.com', owner: 'bitscoid', private: false, language: 'HTML', stars: 0,
-    description: 'This portfolio — a static site served from Hono on Cloudflare Workers with a GitHub contributions API.',
-    topics: ['cloudflare-workers', 'hono', 'portfolio', 'static-site'], homepage: 'https://nurulimam.com', category: 'web',
+    name: 'BITS-Portfolio', owner: 'Banten-IT-Solutions', private: false, language: 'TypeScript', stars: 0,
+    description: 'BITS Personal Portfolio — static site served from Hono on Cloudflare Workers, GitHub contributions API, static site generator.',
+    topics: ['cloudflare-workers', 'hono', 'portfolio', 'static-site', 'typescript'], homepage: 'https://bits.co.id', category: 'web', highlight: true,
   },
 
   // ---------- Banten-IT-Solutions ----------
