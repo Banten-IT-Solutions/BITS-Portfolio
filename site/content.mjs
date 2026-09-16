@@ -58,6 +58,7 @@ export const TOOLS = [
   { n: 'VS Code', f: 'vscode.svg', inv: '' },
   { n: 'Cursor', f: 'cursor.svg', inv: 'invert-in-light' },
   { n: 'Claude Code', f: 'claude-code.svg', inv: '' },
+  { n: 'Hermes Agent', f: 'hermes-agent.svg', inv: 'invert-in-dark' },
   { n: 'Docker', f: 'docker.svg', inv: 'invert-in-dark' },
   { n: 'Figma', f: 'figma.svg', inv: '' },
   { n: 'Notion', f: 'notion.svg', inv: 'invert-in-dark' },
