@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
+    "gen": "node site/generate.mjs",
     "deploy": "wrangler deploy"
   },
   "dependencies": {

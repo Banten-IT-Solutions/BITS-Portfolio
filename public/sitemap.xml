@@ -1,84 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-<url>
-<loc>https://www.mhdalif.id</loc>
-<changefreq>monthly</changefreq>
-<priority>1</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/projects</loc>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/about</loc>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/blogs</loc>
-<lastmod>2026-08-28</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/blog/hermes-agent-changed-how-i-turn-ideas-into-reality</loc>
-<image:image>
-<image:loc>https://www.mhdalif.id/thumbnails/hermes-agent-changed-how-i-turn-ideas-into-reality.png</image:loc>
-</image:image>
-<lastmod>2026-08-28</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/blog/ai-is-changing-almost-everything</loc>
-<image:image>
-<image:loc>https://www.mhdalif.id/thumbnails/ai-is-changing-almost-everything.png</image:loc>
-</image:image>
-<lastmod>2026-08-27</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/blog/context-engineering-is-replacing-prompt-engineering</loc>
-<image:image>
-<image:loc>https://www.mhdalif.id/thumbnails/context-engineering-is-replacing-prompt-engineering.png</image:loc>
-</image:image>
-<lastmod>2026-08-26</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/blog/the-agent-harness-is-becoming-the-new-application-layer</loc>
-<image:image>
-<image:loc>https://www.mhdalif.id/thumbnails/the-agent-harness-is-becoming-the-new-application-layer.png</image:loc>
-</image:image>
-<lastmod>2026-08-25</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/blog/evals-are-becoming-the-ci-cd-layer-for-ai-agents</loc>
-<image:image>
-<image:loc>https://www.mhdalif.id/thumbnails/evals-are-becoming-the-ci-cd-layer-for-ai-agents.png</image:loc>
-</image:image>
-<lastmod>2026-08-24</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/projects/archrouter</loc>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/projects/nexstjs</loc>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.mhdalif.id/projects/serv1x</loc>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://nurulimam.com/</loc></url>
+  <url><loc>https://nurulimam.com/about</loc></url>
+  <url><loc>https://nurulimam.com/projects</loc></url>
+  <url><loc>https://nurulimam.com/projects/ah-si-ata</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-box-core</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-geoip</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-geosite</loc></url>
+  <url><loc>https://nurulimam.com/projects/ngonten-bits-co-id</loc></url>
+  <url><loc>https://nurulimam.com/projects/malesngoding-my-id</loc></url>
+  <url><loc>https://nurulimam.com/projects/nurulimam-com</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-vpn-cloudflare</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-box</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-wrt</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-theme</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-wrt-packages</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-filemanager</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-hilink</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-xl</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-tailscale</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-networks-bot</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-mail-cloudflare</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-nota</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-social-manager</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-smart-masjid</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-pay</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-qris-converter</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-youtube-automation</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-web</loc></url>
+  <url><loc>https://nurulimam.com/projects/bantenit-web</loc></url>
+  <url><loc>https://nurulimam.com/projects/batabagus-web</loc></url>
+  <url><loc>https://nurulimam.com/projects/cetakajaonline-web</loc></url>
+  <url><loc>https://nurulimam.com/projects/pgps-web</loc></url>
+  <url><loc>https://nurulimam.com/projects/rizaputra-web</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-ai-gateway</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-uptime-monitoring</loc></url>
+  <url><loc>https://nurulimam.com/projects/bits-youtube-mp3-downloader</loc></url>
+  <url><loc>https://nurulimam.com/blogs</loc></url>
+  <url><loc>https://nurulimam.com/blog/the-bits-openwrt-ecosystem</loc></url>
+  <url><loc>https://nurulimam.com/blog/the-bits-vpn-and-networking-stack</loc></url>
+  <url><loc>https://nurulimam.com/blog/cloudflare-workers-as-a-full-application-platform</loc></url>
+  <url><loc>https://nurulimam.com/blog/qris-and-payments-tooling-for-indonesia</loc></url>
+  <url><loc>https://nurulimam.com/blog/sveltekit-and-sanity-for-client-work</loc></url>
+  <url><loc>https://nurulimam.com/blog/self-hosted-cloud-devops-and-ai-platform</loc></url>
+  <url><loc>https://nurulimam.com/blog/from-idea-to-production-how-i-ship</loc></url>
+  <url><loc>https://nurulimam.com/blog/ah-si-ata</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-box-core</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-geoip</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-geosite</loc></url>
+  <url><loc>https://nurulimam.com/blog/ngonten-bits-co-id</loc></url>
+  <url><loc>https://nurulimam.com/blog/malesngoding-my-id</loc></url>
+  <url><loc>https://nurulimam.com/blog/nurulimam-com</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-vpn-cloudflare</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-box</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-wrt</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-theme</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-wrt-packages</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-filemanager</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-hilink</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-xl</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-tailscale</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-networks-bot</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-mail-cloudflare</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-nota</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-social-manager</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-smart-masjid</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-pay</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-qris-converter</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-youtube-automation</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-web</loc></url>
+  <url><loc>https://nurulimam.com/blog/bantenit-web</loc></url>
+  <url><loc>https://nurulimam.com/blog/batabagus-web</loc></url>
+  <url><loc>https://nurulimam.com/blog/cetakajaonline-web</loc></url>
+  <url><loc>https://nurulimam.com/blog/pgps-web</loc></url>
+  <url><loc>https://nurulimam.com/blog/rizaputra-web</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-ai-gateway</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-uptime-monitoring</loc></url>
+  <url><loc>https://nurulimam.com/blog/bits-youtube-mp3-downloader</loc></url>
 </urlset>
