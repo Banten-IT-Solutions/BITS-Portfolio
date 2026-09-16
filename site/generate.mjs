@@ -53,7 +53,7 @@ const svg = `<svg width="${ogW}" height="${ogH}" xmlns="http://www.w3.org/2000/s
   </defs>
   <rect width="${ogW}" height="${ogH}" fill="url(#g)"/>
   <!-- name -->
-  <text x="${tx}" y="305" font-family="Georgia,serif" font-size="82" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
+  <text x="${tx}" y="305" font-family="Georgia,serif" font-size="64" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
   <!-- divider -->
   <line x1="${tx}" y1="335" x2="540" y2="335" stroke="#30322d" stroke-width="1"/>
   <!-- title -->
