@@ -53,9 +53,6 @@ export const CATEGORIES = {
   tools: 'Automation & Tools',
 }
 
-// owner filter set for the projects page
-export const OWNERS = ['bitscoid', 'Banten-IT-Solutions', 'BITS-Cloud-Platform', 'BITS-Client', 'BITS-Labs']
-
 // tools shown in the dock (home). `inv` adds an invert class in light/dark mode.
 export const TOOLS = [
   { n: 'VS Code', f: 'VSCode.svg', inv: '' },
