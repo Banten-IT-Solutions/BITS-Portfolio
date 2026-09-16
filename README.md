@@ -111,8 +111,12 @@ Set via GitHub Secrets → Settings → Secrets and variables → Actions.
 
 ---
 
+## 📄 License
+
+MIT License. See [LICENSE](LICENSE).
+
+---
+
 <div align="center">
-  <p>
-    <a href="https://imam.bits.co.id">imam.bits.co.id</a>
-  </p>
+  BITS Portfolio · Developed with ❤️ by Banten IT Solutions
 </div>
