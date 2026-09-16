@@ -35,9 +35,9 @@ function head(title, desc, path, img) {
 <meta name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/>
 <link rel="canonical" href="${esc(url)}"/>
 <link rel="alternate" type="application/rss+xml" href="${esc(SITE.baseUrl)}/feed.xml"/>
-<link rel="shortcut icon" href="/Assets/metadata.webp"/>
-<link rel="icon" href="/Assets/metadata.webp" type="image/webp"/>
-<link rel="apple-touch-icon" href="/Assets/metadata.webp"/>
+<link rel="shortcut icon" href="/assets/metadata.webp"/>
+<link rel="icon" href="/assets/metadata.webp" type="image/webp"/>
+<link rel="apple-touch-icon" href="/assets/metadata.webp"/>
 <meta property="og:title" content="${esc(title)}"/>
 <meta property="og:description" content="${esc(desc)}"/>
 <meta property="og:url" content="${esc(url)}"/>
@@ -57,11 +57,11 @@ function nav() {
 
 function footer() {
   const five = SOCIALS.filter((s) => ['github', 'instagram', 'linkedin', 'x', 'threads'].includes(s.key))
-  return `<footer><ul class="footer-social">${five.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noreferrer" aria-label="${esc(s.label)}" style="--mark:url(/Assets/platform/${s.key}.svg)"></a></li>`).join('')}</ul></footer>`
+  return `<footer><ul class="footer-social">${five.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noreferrer" aria-label="${esc(s.label)}" style="--mark:url(/assets/platform/${s.key}.svg)"></a></li>`).join('')}</ul></footer>`
 }
 
 export function page(title, desc, path, body, img) {
-  return head(title, desc, path, img || '/Assets/og.webp') + '\n<body>\n<main class="portfolio" id="top">\n' + nav() + '\n' + body + '\n' + footer() + '\n</main>\n<script src="/assets/lenis.min.js"></script>\n<script src="/assets/app.js"></script>\n<script type="module" src="/assets/motion.js"></script>\n</body>\n</html>\n'
+  return head(title, desc, path, img || '/assets/og.webp') + '\n<body>\n<main class="portfolio" id="top">\n' + nav() + '\n' + body + '\n' + footer() + '\n</main>\n<script src="/assets/lenis.min.js"></script>\n<script src="/assets/app.js"></script>\n<script type="module" src="/assets/motion.js"></script>\n</body>\n</html>\n'
 }
 
 // ---------- cards ----------
@@ -88,11 +88,11 @@ function ticker() {
 }
 
 function hero() {
-  return `<section class="hero"><div class="hero-copy" data-motion="heroCopy"><h1 class="hero-name"><span><span data-motion="heroName">${esc(SITE.name)}</span></span></h1><p class="hero-role"><em>${esc(SITE.title)}</em> ${esc(SITE.tagline)}</p><div class="hero-actions"><a class="hero-action-button primary-action" href="https://wa.me/62819678048" target="_blank" rel="noreferrer">${I.msg}<span>Discuss a Project</span></a><a class="hero-action-button primary-action" href="/projects">${I.layers}<span>Explore Projects</span></a></div></div><div class="portrait-wrap" data-motion="portrait"><div class="portrait-stage"><div class="portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/Assets/avatar.webp"/></div></div></div></section>`
+  return `<section class="hero"><div class="hero-copy" data-motion="heroCopy"><h1 class="hero-name"><span><span data-motion="heroName">${esc(SITE.name)}</span></span></h1><p class="hero-role"><em>${esc(SITE.title)}</em> ${esc(SITE.tagline)}</p><div class="hero-actions"><a class="hero-action-button primary-action" href="https://wa.me/62819678048" target="_blank" rel="noreferrer">${I.msg}<span>Discuss a Project</span></a><a class="hero-action-button primary-action" href="/projects">${I.layers}<span>Explore Projects</span></a></div></div><div class="portrait-wrap" data-motion="portrait"><div class="portrait-stage"><div class="portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/assets/avatar.webp"/></div></div></div></section>`
 }
 
 function githubGraph() {
-  return `<section class="github-section section"><div class="section-head github-head-centered" data-motion="sectionHead"><div class="github-head-wrap"><div class="github-icon-badge"><img alt="GitHub Icon" class="github-header-svg" src="/Assets/github.svg"/></div><h2 class="github-heading">GitHub Contributions</h2><p class="github-subtext">Loading contributions…</p></div></div><div class="github-card" data-motion="github"><div class="github-graph-scroll" id="github-graph" data-lenis-prevent></div><div class="github-legend"><span>Less</span><div class="github-legend-squares"><i class="level-0"></i><i class="level-1"></i><i class="level-2"></i><i class="level-3"></i><i class="level-4"></i></div><span>More</span></div></div></section>`
+  return `<section class="github-section section"><div class="section-head github-head-centered" data-motion="sectionHead"><div class="github-head-wrap"><div class="github-icon-badge"><img alt="GitHub Icon" class="github-header-svg" src="/assets/github.svg"/></div><h2 class="github-heading">GitHub Contributions</h2><p class="github-subtext">Loading contributions…</p></div></div><div class="github-card" data-motion="github"><div class="github-graph-scroll" id="github-graph" data-lenis-prevent></div><div class="github-legend"><span>Less</span><div class="github-legend-squares"><i class="level-0"></i><i class="level-1"></i><i class="level-2"></i><i class="level-3"></i><i class="level-4"></i></div><span>More</span></div></div></section>`
 }
 
 export function home() {
@@ -101,7 +101,7 @@ export function home() {
   const bentoCls = ['bento-card-main', 'bento-card-top-right', 'bento-card-sub1', 'bento-card-sub2', 'bento-card-tall']
   const blogs = `<section class="blogs section"><div class="blogs-section-head"><p class="blogs-head-desc">Thoughts on software engineering, cloud platforms, networking, and the projects in this portfolio.</p><div class="blogs-head-title"><span class="section-label">02 / FEATURED BLOGS</span><h2 class="recent-projects-heading">Featured Blogs</h2></div></div><div class="bento-container-card"><div class="bento-grid">${FEATURED_POSTS.map((x, i) => bentoCard(x, bentoCls[i] || 'bento-card-sub1', i)).join('')}</div></div><div class="explore-more-wrap"><a class="explore-more-link" href="/blogs"><span>Explore All Blogs</span>${I.telescope}</a></div></section>`
 
-  const dock = `<div class="dock-wrapper"><div class="dock-stack">${TOOLS.map((t, i) => `<div class="dock-item-wrap" data-motion="dock" data-motion-delay="${i * 70}"><div class="dock-item-card"><img alt="${esc(t.n)}" loading="lazy" width="28" height="28" class="dock-item-icon ${t.inv}" src="/Assets/tools/${encodeURIComponent(t.f)}"/></div></div>`).join('')}</div></div><p class="tools-description">The software, apps, and tools I reach for daily when designing and engineering digital products.</p>`
+  const dock = `<div class="dock-wrapper"><div class="dock-stack">${TOOLS.map((t, i) => `<div class="dock-item-wrap" data-motion="dock" data-motion-delay="${i * 70}"><div class="dock-item-card"><img alt="${esc(t.n)}" loading="lazy" width="28" height="28" class="dock-item-icon ${t.inv}" src="/assets/tools/${encodeURIComponent(t.f)}"/></div></div>`).join('')}</div></div><p class="tools-description">The software, apps, and tools I reach for daily when designing and engineering digital products.</p>`
 
   const quote = `<blockquote class="hero-quote github-quote"><p>“The happiness of your life depends upon the quality of your thoughts.”</p><cite>Marcus Aurelius</cite></blockquote>`
 
@@ -138,7 +138,7 @@ export function blogDetail(x) {
 // ---------- about ----------
 export function about() {
   const cats = Object.entries(CATEGORIES)
-  return `<section class="about-page"><article class="about-hero" data-motion="heroCopy"><header class="about-hero-lead"><p class="about-eyebrow">About / Biography</p><div class="about-identity"><div class="about-portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/Assets/identity.webp"/></div><div><h1 class="about-title"><span><span>${esc(SITE.name)}</span></span></h1><p class="about-role">${esc(SITE.title)} based in ${esc(SITE.location)}.</p></div></div></header><div class="about-hero-copy"><p>I build things, publish most of them openly, and keep the record here. Full-stack and DevOps engineer running ${esc(SITE.company)} — software, cloud, networking, and open source.</p><p>This page is the longer version: what I work on, the stack I reach for, and how I think about building.</p></div></article>
+  return `<section class="about-page"><article class="about-hero" data-motion="heroCopy"><header class="about-hero-lead"><p class="about-eyebrow">About / Biography</p><div class="about-identity"><div class="about-portrait"><img alt="Portrait of ${esc(SITE.name)}" src="/assets/identity.webp"/></div><div><h1 class="about-title"><span><span>${esc(SITE.name)}</span></span></h1><p class="about-role">${esc(SITE.title)} based in ${esc(SITE.location)}.</p></div></div></header><div class="about-hero-copy"><p>I build things, publish most of them openly, and keep the record here. Full-stack and DevOps engineer running ${esc(SITE.company)} — software, cloud, networking, and open source.</p><p>This page is the longer version: what I work on, the stack I reach for, and how I think about building.</p></div></article>
 <section class="about-chapter about-build" data-motion="sectionHead"><header class="about-chapter-head"><div><p class="about-chapter-index">01 / What I Do</p><h2>Software, infrastructure, and networking — end to end.</h2></div></header><ul class="about-interest-grid">${cats.map(([k, label], i) => `<li><small>0${i + 1}</small><strong>${esc(label)}</strong><span>${esc(catDesc(k))}</span></li>`).join('')}</ul></section>
 <section class="about-chapter about-footprint" data-motion="sectionHead"><header class="about-chapter-head"><div><p class="about-chapter-index">02 / Stack</p><h2>The tools I keep coming back to.</h2></div></header><p class="about-prose">Hono and TypeScript on the edge, SvelteKit and Sanity for content, Go and the sing-box kernel for networking, Docker for self-hosted, and OpenWrt for routers. One worker and one database wherever the product fits — because a system you can understand end to end is a system you can actually ship.</p></section>
 <section class="about-chapter about-perspective" data-motion="sectionHead"><header class="about-chapter-head"><div><p class="about-chapter-index">03 / Digital Footprint</p><h2>A record of the work, not just a resumé.</h2></div></header><p class="about-prose">Work has a habit of disappearing into private repositories and old folders. This site keeps <a href="/projects">projects</a> and <a href="/blogs">writing</a> in one place I control, where they compound into a record of what I built.</p></section></section>`

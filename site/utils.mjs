@@ -7,4 +7,4 @@ export const repoUrl = (p) => `https://github.com/${p.owner}/${p.name}`
 
 export const dateFmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 
-export const cover = (cat) => `/Assets/covers/${cat}.webp`
+export const cover = (cat) => `/assets/covers/${cat}.webp`
