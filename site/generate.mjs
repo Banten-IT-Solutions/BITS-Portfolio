@@ -43,7 +43,20 @@ const img = (name) => new URL('images/' + name, STATIC).pathname
 await sharp(img('avatar.webp')).toFile(new URL('assets/avatar.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
-await sharp(img('avatar.webp')).resize(1200, 630).toFile(new URL('assets/og.webp', PUBLIC).pathname)
+// OG image — name/title left, avatar right
+const ogW = 1200, ogH = 630
+const avS = 320, aP = 48
+const svg = `<svg width="${ogW}" height="${ogH}" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2b2c26"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient></defs>
+  <rect width="${ogW}" height="${ogH}" fill="url(#g)"/>
+  <text x="${aP}" y="280" font-family="Georgia,serif" font-size="52" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
+  <text x="${aP}" y="334" font-family="monospace" font-size="18" fill="#96998f">Full-Stack &amp; DevOps Engineer</text>
+  <text x="${aP}" y="368" font-family="monospace" font-size="13" fill="#6f716a">Banten, Indonesia · Banten IT Solutions</text>
+</svg>`
+await sharp(Buffer.from(svg))
+  .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: (ogH - avS) / 2, left: ogW - avS - aP }])
+  .webp()
+  .toFile(new URL('assets/og.webp', PUBLIC).pathname)
 // client js
 copyFileSync(new URL('app.js', SITEDIR), new URL('assets/app.js', PUBLIC))
 copyFileSync(new URL('motion.js', SITEDIR), new URL('assets/motion.js', PUBLIC))
