@@ -41,7 +41,6 @@ copyFileSync(new URL('github.svg', STATIC), new URL('assets/github.svg', PUBLIC)
 // portrait/identity/metadata/og — all derived from avatar with appropriate sizes
 const img = (name) => new URL('images/' + name, STATIC).pathname
 await sharp(img('avatar.webp')).toFile(new URL('assets/avatar.webp', PUBLIC).pathname)
-await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity.webp', PUBLIC).pathname)
 await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
 // OG image — professional card: vertical accent, structured text, big avatar
 const ogW = 1200, ogH = 630

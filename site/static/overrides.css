@@ -56,7 +56,7 @@ body,p{letter-spacing:.02em}
 .crumb-sep{color:var(--line)}
 .crumb-current{color:var(--ink)}
 .blog-index-toolbar{margin:0 0 34px}
-.blog-index-controls{flex-wrap:nowrap}
+.blog-index-controls{display:flex;align-items:center;gap:10px;width:100%;flex-wrap:nowrap}
 .blog-search{flex:1 1 auto;min-width:0}
 .blog-sort-trigger{flex:none}
 .blog-search,.blog-sort-trigger{border:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none!important;height:46px;transition:border-color .25s,color .2s}
@@ -80,6 +80,17 @@ a.detail-chip:hover,button.detail-chip:hover{color:var(--ink);border-color:var(-
 .detail-chip svg{width:13px;height:13px}
 .tools-description{font-family:var(--font-display);font-size:clamp(17px,1.5vw,21px);line-height:1.6;letter-spacing:.01em;opacity:1}
 @media (max-width:640px){.article{padding:40px 20px 52px}}
+
+/* About — editorial chapters */
+.about-page{padding:48px 54px}
+.about-chapter{border-top:1px solid var(--line);padding:44px 0;text-align:center}
+.about-chapter-title{margin:0 0 26px;font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;line-height:1}
+.about-lede{max-width:640px;margin:0 auto 26px;color:var(--muted);font-family:var(--font-display);font-size:clamp(17px,1.5vw,21px);line-height:1.6}
+.about-lede a{color:var(--ink)}
+.about-list{text-align:left}
+.about-list .work-row{cursor:default}
+.about-list .work-row:hover{background:transparent;padding-left:8px}
+@media (max-width:640px){.about-page{padding:40px 20px}.about-chapter{padding:34px 0}}
 .github-subtext em{font-family:var(--font-display);font-style:italic;font-size:1.4em;line-height:1;color:var(--ink)}
 @media (max-width:800px){.github-head-centered{align-items:center!important}}
 
