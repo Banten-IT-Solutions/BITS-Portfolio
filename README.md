@@ -1,12 +1,12 @@
 <div align="center">
   <h1>BITS Portfolio</h1>
   <p>
-    <a href="https://bits.co.id">
-      <img src="https://img.shields.io/badge/bits.co.id-00C853?style=for-the-badge&logo=cloudflare&logoColor=white" alt="bits.co.id" />
+    <a href="https://imam.bits.co.id">
+      <img src="https://img.shields.io/badge/BITS%20Portfolio-00C853?style=for-the-badge&logo=cloudflare&logoColor=white" alt="BITS Portfolio" />
     </a>
   </p>
   <p>
-    <strong>Banten IT Solutions</strong> — Personal portfolio & blog served from Hono on Cloudflare Workers with a GitHub contributions API and static site generation.
+    Personal portfolio & blog — a static site served from Hono on Cloudflare Workers with a GitHub contributions API and static site generation.
   </p>
   <br>
   <p>
@@ -27,11 +27,11 @@
 | **GitHub Contributions API**    | Fetches and caches contribution data from jogruber mirror API — serves as JSON endpoint   |
 | **Dark / Light Theme**          | Persistent theme toggle with system preference detection and smooth transition             |
 | **Smooth Scroll & Motion**      | Lenis-powered smooth scroll with staggered reveal animations on cards, sections, and hero  |
-| **SEO & Open Graph**            | Canonical URLs, OG tags, Twitter cards, RSS feed, sitemap, and JSON-LD structured data     |
-| **Responsive Terminal Cards**   | Project cards with terminal aesthetic — category filter, search, and share functionality    |
+| **SEO & Open Graph**            | Canonical URLs, OG tags, Twitter cards, RSS feed, sitemap                                  |
+| **Responsive Terminal Cards**   | Project cards with terminal aesthetic — category filter, search, and share                  |
 | **Bento Blog Grid**             | Featured blog posts in a bento-style layout with cover images and category overlays         |
-| **Dock**                        | Bottom-anchored tool dock with staggered reveal animation and tool icon display             |
-| **Cloudflare Native**           | Single Worker deploy, Assets binding, `run_worker_first`, and observability enabled         |
+| **Tool Dock**                   | Bottom-anchored tool dock with staggered reveal animation and icon display                  |
+| **Cloudflare Native**           | Single Worker deploy, Assets binding, `run_worker_first`, and observability                 |
 
 ## 🛠️ Tech Stack
 
@@ -49,7 +49,7 @@
 ## 📁 Project Structure
 
 ```text
-bits-portfolio/
+BITS-Portfolio/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml         # workflow_dispatch — generate + wrangler deploy
@@ -69,6 +69,7 @@ bits-portfolio/
 ├── wrangler.jsonc              # Wrangler configuration
 ├── package.json
 ├── tsconfig.json
+├── .env.example
 ├── LICENSE
 ├── README.md
 └── .gitignore
@@ -101,12 +102,10 @@ npm run deploy
 
 ### Environment Variables
 
-Secrets required for deployment — lihat `.env.example` untuk referensi:
-
-| Variable                | Description         |
-| ----------------------- | ------------------- |
-| `CLOUDFLARE_API_TOKEN`  | Cloudflare API token dengan Workers permissions |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
+| Variable                | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `CLOUDFLARE_API_TOKEN`  | Cloudflare API token with Workers permissions |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID                      |
 
 Set via GitHub Secrets → Settings → Secrets and variables → Actions.
 
@@ -114,10 +113,6 @@ Set via GitHub Secrets → Settings → Secrets and variables → Actions.
 
 <div align="center">
   <p>
-    <a href="https://bits.co.id">bits.co.id</a> ·
-    <a href="https://github.com/Banten-IT-Solutions">Banten IT Solutions</a>
-  </p>
-  <p>
-    Built with ☕ and Cloudflare Workers
+    <a href="https://imam.bits.co.id">imam.bits.co.id</a>
   </p>
 </div>
