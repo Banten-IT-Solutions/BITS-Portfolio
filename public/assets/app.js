@@ -32,6 +32,12 @@
       menuBtn.classList.toggle('is-open');
       navLinks.classList.toggle('is-open');
     });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        menuBtn.classList.remove('is-open');
+        navLinks.classList.remove('is-open');
+      }
+    });
   }
 
   // Share buttons

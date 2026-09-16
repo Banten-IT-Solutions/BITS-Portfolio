@@ -56,6 +56,9 @@ body,p{letter-spacing:.02em}
 .crumb-sep{color:var(--line)}
 .crumb-current{color:var(--ink)}
 .blog-index-toolbar{margin:0 0 34px}
+.blog-index-controls{flex-wrap:nowrap}
+.blog-search{flex:1 1 auto;min-width:0}
+.blog-sort-trigger{flex:none}
 .blog-search,.blog-sort-trigger{border:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none!important;height:46px;transition:border-color .25s,color .2s}
 .blog-search:hover,.blog-sort-trigger:hover{color:var(--ink);background:transparent;transform:none;box-shadow:none!important;border-color:var(--ink)}
 .blog-search:focus-within,.blog-sort-trigger:focus-visible{color:var(--ink);background:transparent;border-color:var(--ink);box-shadow:none!important}
@@ -79,7 +82,16 @@ a.detail-chip:hover,button.detail-chip:hover{color:var(--ink);border-color:var(-
 @media (max-width:640px){.article{padding:40px 20px 52px}}
 .github-subtext em{font-family:var(--font-display);font-style:italic;font-size:1.4em;line-height:1;color:var(--ink)}
 @media (max-width:800px){.github-head-centered{align-items:center!important}}
-@media (max-width:640px){.work-row{flex-wrap:wrap;gap:10px 14px;padding:20px 4px}.work-row-main{flex-basis:calc(100% - 40px)}.work-row-meta{width:100%;flex-direction:row;align-items:center;flex-wrap:wrap;gap:6px 16px}.work-row-arrow{display:none}}
+
+/* Mobile menu — hamburger left, dropdown panel */
+@media (max-width:800px){
+  .mobile-menu-trigger{position:absolute;left:14px;top:50%;transform:translateY(-50%)}
+  .mobile-menu-trigger.is-open{color:var(--ink)}
+  .nav nav.is-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;gap:0;background:var(--shell);border-bottom:1px solid var(--line);padding:8px 20px 12px}
+  .nav nav.is-open a{padding:13px 0;border-bottom:1px solid var(--line)}
+  .nav nav.is-open a:last-child{border-bottom:0}
+}
+@media (max-width:640px){.work-row{gap:12px;padding:20px 4px}.work-row-main{min-width:0}.work-row-meta{font-size:10px}.work-row-arrow{display:none}}
 
 /* Hero buttons — flat editorial, matches hairline + mono theme */
 .hero-action-button{border-radius:0!important;border:1px solid var(--line)!important;background:transparent;box-shadow:none!important;color:var(--ink);font-family:var(--font-mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:0 22px!important;min-height:46px;transition:background .25s,color .25s,border-color .25s}
