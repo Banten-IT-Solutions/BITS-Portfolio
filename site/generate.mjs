@@ -45,19 +45,16 @@ await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity
 await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
 // OG image — kartu nama style: compact, text left, avatar right
 const ogW = 1200, ogH = 630
-const avS = 280, avPad = 55
-const textX = 60
+const avS = 380, avPad = 40
+const textX = 56
 const svg = `<svg width="${ogW}" height="${ogH}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2b2c26"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2b2c26"/><stop offset="100%" stop-color="#0d0e0c"/></linearGradient>
   </defs>
   <rect width="${ogW}" height="${ogH}" fill="url(#g)"/>
-  <line x1="${textX}" y1="390" x2="635" y2="390" stroke="#30322d" stroke-width="1"/>
-  <text x="${textX}" y="245" font-family="Georgia,serif" font-size="56" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
-  <text x="${textX}" y="295" font-family="monospace" font-size="17" fill="#96998f">Full-Stack &amp; DevOps Engineer</text>
-  <text x="${textX}" y="325" font-family="monospace" font-size="13" fill="#6f716a">Banten, Indonesia</text>
-  <text x="${textX}" y="425" font-family="monospace" font-size="11" fill="#6f716a">github.com/bitscoid</text>
-  <text x="${textX}" y="445" font-family="monospace" font-size="11" fill="#6f716a">bits.co.id</text>
+  <text x="${textX}" y="270" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#f3f4ee">Nurul Imam</text>
+  <text x="${textX}" y="326" font-family="monospace" font-size="19" fill="#96998f" letter-spacing="0.5">Full-Stack &amp; DevOps Engineer</text>
+  <text x="${textX}" y="358" font-family="monospace" font-size="13" fill="#6f716a">Banten, Indonesia</text>
 </svg>`
 await sharp(Buffer.from(svg))
   .composite([{ input: await sharp(img('avatar.webp')).resize(avS, avS).toBuffer(), top: (ogH - avS) / 2, left: ogW - avS - avPad }])
