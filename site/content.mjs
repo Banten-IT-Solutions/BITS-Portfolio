@@ -65,7 +65,7 @@ export const TOOLS = [
   { n: 'Obsidian', f: 'obsidian.svg', inv: '' },
   { n: 'Termius', f: 'termius.svg', inv: 'invert-in-dark' },
   { n: 'Brave', f: 'brave-origin.svg', inv: '' },
-  { n: 'Codex', f: 'codex.svg', inv: '' },
+  { n: 'Codex', f: 'codex.svg', inv: 'invert-in-dark' },
   { n: 'Kiro', f: 'kiro.svg', inv: 'invert-in-dark' },
   { n: 'Bitwarden', f: 'bitwarden.svg', inv: '' },
   { n: 'Discord', f: 'discord.svg', inv: '' },
