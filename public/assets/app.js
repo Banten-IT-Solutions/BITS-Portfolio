@@ -113,7 +113,7 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (!d.success || !d.weeks || !d.weeks.length) { if (subtext) subtext.textContent = 'Unavailable right now.'; return; }
-        if (subtext) subtext.textContent = d.total + ' contributions in the last year';
+        if (subtext) subtext.innerHTML = '<em>' + Number(d.total).toLocaleString('en-US') + '</em> contributions in the last year';
         var grid = document.createElement('div');
         grid.className = 'github-graph-grid';
         d.weeks.forEach(function (week) {

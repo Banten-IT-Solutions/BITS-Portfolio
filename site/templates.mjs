@@ -1,6 +1,6 @@
 // Nurul Imam — HTML/XML template builders. Pure string functions; no side effects.
 import { SITE, SOCIALS, CATEGORIES, PROJECTS, ALL_POSTS, FEATURED, FEATURED_POSTS, TOOLS } from './content.mjs'
-import { esc, slug, dateFmt, repoUrl, cover } from './utils.mjs'
+import { esc, slug, dateFmt, repoUrl } from './utils.mjs'
 import { I, sun, moon } from './icons.mjs'
 
 // ---------- shell ----------
@@ -17,7 +17,7 @@ function head(title, desc, path, img) {
 [data-motion="heroName"]{transform:translateY(110%)}
 [data-motion="heroCopy"]{opacity:0;transform:translateY(24px)}
 [data-motion="portrait"]{opacity:0;transform:scale(.96)}
-[data-motion="sectionHead"],[data-motion="github"],[data-motion="article"],[data-motion="card"],[data-motion="bento"]{opacity:0;transform:translateY(20px)}
+[data-motion="sectionHead"],[data-motion="github"],[data-motion="article"],[data-motion="card"]{opacity:0;transform:translateY(20px)}
 [data-motion="dock"]{opacity:0;transform:translateY(16px) scale(.85)}
 </style>
 <noscript><style>[data-motion]{opacity:1!important;transform:none!important}</style></noscript>
@@ -63,17 +63,18 @@ export function page(title, desc, path, body, img) {
 }
 
 // ---------- cards ----------
-function terminalCard(p, i = 0) {
-  const tags = (p.topics || []).slice(0, 4)
-  return `<article class="terminal-repo-card" data-motion="card" data-motion-delay="${i * 80}" id="project-${slug(p.name)}"><div class="terminal-header"><div class="terminal-dots"><i></i><i></i><i></i></div></div><div class="terminal-body"><div class="terminal-title"><h3><a class="terminal-card-link" href="/projects/${slug(p.name)}">${esc(p.name)}</a></h3></div><p class="terminal-desc">${esc(p.description)}</p><div class="terminal-footer"><div class="terminal-tags">${tags.map((t) => `<span class="terminal-tag">${esc(t)}</span>`).join('')}</div></div></div><div class="terminal-card-actions"><a href="${esc(repoUrl(p))}" target="_blank" rel="noreferrer" class="terminal-card-action" aria-label="Open ${esc(p.name)} GitHub repository" title="Open ${esc(p.name)} GitHub repository" tabindex="0"><span aria-hidden="true"><i class="github-mark"></i></span></a><button type="button" class="terminal-card-action" aria-label="Share project ${esc(p.name)}" title="Share project" data-share="${esc(SITE.baseUrl)}/projects/${slug(p.name)}" tabindex="0">${I.share}</button></div></article>`
+// language dot colors (GitHub linguist palette)
+const LANG_COLORS = { Go: '#00add8', TypeScript: '#3178c6', Svelte: '#ff3e00', Kotlin: '#7f52ff', Python: '#3776ab', Shell: '#89e051', CSS: '#663399', JavaScript: '#f1e05a', Vue: '#41b883', PHP: '#777bb4', HTML: '#e34c26', Dockerfile: '#384d54' }
+
+function workRow(p, i = 0, attrs = '') {
+  const langColor = LANG_COLORS[p.language] || 'var(--muted)'
+  const stars = p.stars > 0 ? `<span class="work-row-stars">★ ${p.stars}</span>` : ''
+  const cat = CATEGORIES[p.category] || p.category
+  return `<li data-motion="card" data-motion-delay="${i * 90}"${attrs}><a class="work-row" href="/projects/${slug(p.name)}"><span class="work-row-index">${String(i + 1).padStart(2, '0')}</span><span class="work-row-main"><h3 class="work-row-title">${esc(p.name)}</h3><p class="work-row-desc">${esc(p.description)}</p></span><span class="work-row-meta"><span class="work-row-cat">${esc(cat)}</span><span class="work-row-lang"><i style="--lang:${langColor}"></i>${esc(p.language || '')}</span>${stars}</span><span class="work-row-arrow" aria-hidden="true">→</span></a></li>`
 }
 
-function bentoCard(x, cls, i = 0) {
-  return `<a class="bento-card ${cls}" data-motion="bento" data-motion-delay="${i * 70}" href="/blog/${slug(x.slug)}"><img alt="${esc(x.title)}" loading="lazy" class="bento-bg-img" src="${cover(x.category)}"/><div class="bento-overlay"></div><div class="bento-content"><h3>${esc(x.title)}</h3><div class="bento-meta-bar"><span class="bento-date">${dateFmt(x.date)}</span><i></i><span class="bento-date">${esc(x.read)}</span></div></div></a>`
-}
-
-function sectionLabel(n, text) {
-  return `<span class="section-label">${n} / ${esc(text.toUpperCase())}</span>`
+function postRow(x, i = 0, attrs = '') {
+  return `<li data-motion="card" data-motion-delay="${i * 90}"${attrs}><a class="work-row post-row" href="/blogs/${slug(x.slug)}"><span class="work-row-index">${String(i + 1).padStart(2, '0')}</span><span class="work-row-main"><h3 class="work-row-title post-row-title">${esc(x.title)}</h3></span><span class="work-row-meta"><span>${dateFmt(x.date)}</span><span>${esc(x.read)}</span></span><span class="work-row-arrow" aria-hidden="true">→</span></a></li>`
 }
 
 // ---------- home ----------
@@ -95,43 +96,64 @@ function githubGraph() {
 }
 
 export function home() {
-  const work = `<section class="work section"><div class="section-head" data-motion="sectionHead"><div><span class="section-label">01 / SELECTED WORK</span><h2 class="recent-projects-heading">Featured Projects</h2></div><p>Selected product work across interfaces, systems, networking, and open source software.</p></div><div class="project-list terminal-grid">${FEATURED.map(terminalCard).join('')}</div><div class="explore-more-wrap"><a class="explore-more-link" href="/projects"><span>Explore All Projects</span>${I.telescope}</a></div></section>`
+  const work = `<section class="work section"><div class="section-head work-head" data-motion="sectionHead"><div><h2 class="work-heading">Featured Projects</h2></div><p><em>A selection of things I’ve designed, built, and shipped.</em></p></div><ol class="work-list">${FEATURED.map(workRow).join('')}</ol><div class="explore-more-wrap"><a class="explore-more-link" href="/projects"><span>Explore All Projects</span><span class="explore-more-arrow" aria-hidden="true">→</span></a></div></section>`
 
-  const bentoCls = ['bento-card-main', 'bento-card-top-right', 'bento-card-sub1', 'bento-card-sub2', 'bento-card-tall']
-  const blogs = `<section class="blogs section"><div class="blogs-section-head"><p class="blogs-head-desc">Thoughts on software engineering, cloud platforms, networking, and the projects in this portfolio.</p><div class="blogs-head-title"><span class="section-label">02 / FEATURED BLOGS</span><h2 class="recent-projects-heading">Featured Blogs</h2></div></div><div class="bento-container-card"><div class="bento-grid">${FEATURED_POSTS.map((x, i) => bentoCard(x, bentoCls[i] || 'bento-card-sub1', i)).join('')}</div></div><div class="explore-more-wrap"><a class="explore-more-link" href="/blogs"><span>Explore All Blogs</span>${I.telescope}</a></div></section>`
+  const blogs = `<section class="blogs section"><div class="section-head work-head" data-motion="sectionHead"><div><h2 class="work-heading">Recent Posts</h2></div><p><em>What I’ve been learning and writing about.</em></p></div><ol class="work-list post-list">${FEATURED_POSTS.map(postRow).join('')}</ol><div class="explore-more-wrap"><a class="explore-more-link" href="/blogs"><span>Explore All Blogs</span><span class="explore-more-arrow" aria-hidden="true">→</span></a></div></section>`
 
-  const dock = `<div class="dock-wrapper"><div class="dock-stack">${TOOLS.map((t, i) => `<div class="dock-item-wrap" data-motion="dock" data-motion-delay="${i * 70}"><div class="dock-item-card"><img alt="${esc(t.n)}" loading="lazy" width="28" height="28" class="dock-item-icon ${t.inv}" src="/assets/tools/${encodeURIComponent(t.f)}"/></div></div>`).join('')}</div></div><p class="tools-description">The software, apps, and tools I reach for daily when designing and engineering digital products.</p>`
+  const dock = `<div class="dock-wrapper"><div class="dock-stack">${TOOLS.map((t, i) => `<div class="dock-item-wrap" data-motion="dock" data-motion-delay="${i * 70}"><div class="dock-item-card"><img alt="${esc(t.n)}" loading="lazy" width="28" height="28" class="dock-item-icon ${t.inv}" src="/assets/tools/${encodeURIComponent(t.f)}"/></div></div>`).join('')}</div></div><p class="tools-description"><em>The software, apps, and tools I reach for daily when designing and engineering digital products.</em></p>`
 
-  const quote = `<blockquote class="hero-quote github-quote"><p>“The happiness of your life depends upon the quality of your thoughts.”</p><cite>Marcus Aurelius</cite></blockquote>`
-
-  return hero() + ticker() + work + blogs + githubGraph() + quote + dock
+  return hero() + ticker() + work + blogs + githubGraph() + dock
 }
 
 // ---------- collection (projects/blogs) ----------
 function breadcrumb(label) {
-  return `<nav class="collection-breadcrumb"><ol class="flex flex-wrap items-center gap-1.5 text-sm wrap-break-word text-muted-foreground"><li class="inline-flex items-center gap-1"><a class="transition-colors hover:text-foreground" href="/">${I.house}<span>Home</span></a></li><li class="[&amp;&gt;svg]:size-3.5"></li><li class="inline-flex items-center gap-1"><span>${esc(label)}</span></li></ol></nav>`
+  return `<nav class="collection-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">${I.house}<span>Home</span></a></li><li class="crumb-sep" aria-hidden="true">/</li><li><span class="crumb-current">${esc(label)}</span></li></ol></nav>`
+}
+
+function collectionHead(title, lede) {
+  return `<div class="section-head work-head" data-motion="sectionHead"><div><h1 class="work-heading">${esc(title)}</h1></div><p><em>${esc(lede)}</em></p></div>`
 }
 
 function toolbar(label, noun) {
   return `<div class="blog-index-toolbar"><span class="sr-only">${esc(noun)}</span><div class="blog-index-controls"><label class="blog-search">${I.search}<span class="sr-only">Search ${esc(label)}</span><input type="search" placeholder="Search ${esc(label.toLowerCase())}…" data-filter-input/>${I.cmd}</label><button class="blog-sort-trigger" type="button">${I.funnel}<span>Filter</span></button></div></div>`
 }
 
+const filterAttrs = (cat, text) => ` class="filter-item" data-cat="${esc(cat)}" data-search="${esc(text.toLowerCase())}"`
+
 export function projectsIndex() {
-  return `<section class="collection-page projects-collection-page"><header class="collection-head" data-motion="sectionHead">${breadcrumb('Projects')}<h1>Explore Projects</h1><p>Selected product work across interfaces, systems, networking, and open source software — public and private.</p></header>${toolbar('projects', 'projects')}<div class="project-list terminal-grid" data-filter-grid>${PROJECTS.map((p, i) => `<div data-cat="${esc(p.category)}" data-search="${esc((p.name + ' ' + p.description + ' ' + (p.topics || []).join(' ')).toLowerCase())}" class="filter-item">${terminalCard(p, i)}</div>`).join('')}</div></section>`
+  return `<section class="collection-page projects-collection-page">${breadcrumb('Projects')}${collectionHead('Explore Projects', 'Every project, public and private — interfaces, systems, networking, and open source software.')}${toolbar('projects', 'projects')}<ol class="work-list" data-filter-grid>${PROJECTS.map((p, i) => workRow(p, i, filterAttrs(p.category, p.name + ' ' + p.description + ' ' + (p.topics || []).join(' ')))).join('')}</ol></section>`
 }
 
 export function blogsIndex() {
-  return `<section class="collection-page blog-collection-page"><header class="collection-head" data-motion="sectionHead">${breadcrumb('Blogs')}<h1>Explore Blogs</h1><p>Thoughts on software engineering, cloud platforms, networking, and modern systems.</p></header>${toolbar('blogs', 'articles')}<div class="blog-index-grid" data-filter-grid>${ALL_POSTS.map((x, i) => `<article class="blog-index-card filter-item" data-motion="card" data-motion-delay="${i * 80}" data-cat="${esc(x.category)}" data-search="${esc((x.title + ' ' + x.summary + ' ' + x.tags.join(' ')).toLowerCase())}"><a href="/blog/${slug(x.slug)}"><div class="blog-index-cover"><img alt="${esc(x.title)}" loading="lazy" src="${cover(x.category)}"/></div><div class="blog-index-copy"><div class="blog-index-meta"><time>${dateFmt(x.date)}</time><i></i><span>${esc(x.read)}</span></div><h2>${esc(x.title)}</h2><p>${esc(x.summary)}</p></div></a></article>`).join('')}</div></section>`
+  return `<section class="collection-page blog-collection-page">${breadcrumb('Blogs')}${collectionHead('Explore Blogs', 'Thoughts on software engineering, cloud platforms, networking, and modern systems.')}${toolbar('blogs', 'articles')}<ol class="work-list post-list" data-filter-grid>${ALL_POSTS.map((x, i) => postRow(x, i, filterAttrs(x.category, x.title + ' ' + x.summary + ' ' + x.tags.join(' ')))).join('')}</ol></section>`
 }
 
 // ---------- detail pages ----------
+function detailChip(s) {
+  return `<span class="detail-chip">${s}</span>`
+}
+
 export function projectDetail(p) {
   const related = ALL_POSTS.filter((x) => x.project === p.name)
-  return `<article class="article project-detail"><header class="article-head project-detail-head" data-motion="article"><h1 class="article-title">${esc(p.name)}</h1><p class="project-detail-summary">${esc(p.description)}</p><div class="article-meta project-detail-meta"><a href="${esc(repoUrl(p))}" target="_blank" rel="noreferrer"><i class="github-mark"></i>Repository</a><span class="article-meta-item">${I.pkg}${p.private ? 'Private' : 'Open Source'}</span><button class="article-share-trigger" type="button" data-share="${esc(SITE.baseUrl)}/projects/${slug(p.name)}">${I.share}<span>Share</span></button></div></header><div class="article-body project-detail-body"><p><strong>${esc(p.name)}</strong> is a project by ${esc(SITE.name)} under <code>${esc(p.owner)}</code>.</p><h2>About</h2><p>${esc(p.description)}</p><h2>Stack</h2><p>Primary language: <code>${esc(p.language || 'mixed')}</code>.${p.topics.length ? ' Topics: ' + p.topics.slice(0, 8).map((t) => `<code>${esc(t)}</code>`).join(', ') + '.' : ''}</p>${p.homepage && p.homepage.startsWith('http') ? `<h2>Live</h2><p><a href="${esc(p.homepage)}" target="_blank" rel="noreferrer">${esc(p.homepage)}</a></p>` : ''}${related.length ? `<h2>Write-up</h2><p>${related.map((x) => `<a href="/blog/${slug(x.slug)}">${esc(x.title)}</a>`).join('')}</p>` : ''}</div></article>`
+  const chips = [
+    `<a class="detail-chip" href="${esc(repoUrl(p))}" target="_blank" rel="noreferrer"><i class="github-mark"></i>Repository</a>`,
+    detailChip(esc(CATEGORIES[p.category] || p.category)),
+    p.language ? detailChip(esc(p.language)) : '',
+    p.stars > 0 ? detailChip(`★ ${p.stars}`) : '',
+    detailChip(p.private ? 'Private' : 'Open Source'),
+    `<button class="detail-chip article-share-trigger" type="button" data-share="${esc(SITE.baseUrl)}/projects/${slug(p.name)}">${I.share}<span>Share</span></button>`,
+  ]
+  return `<article class="article project-detail">${breadcrumb('Projects')}<header class="section-head work-head" data-motion="article"><div><h1 class="work-heading">${esc(p.name)}</h1></div><p><em>${esc(p.description)}</em></p><div class="detail-meta">${chips.join('')}</div></header><div class="article-body project-detail-body"><p><strong>${esc(p.name)}</strong> is a project by ${esc(SITE.name)} under <code>${esc(p.owner)}</code>.</p><h2>About</h2><p>${esc(p.description)}</p><h2>Stack</h2><p>Primary language: <code>${esc(p.language || 'mixed')}</code>.${p.topics.length ? ' Topics: ' + p.topics.slice(0, 8).map((t) => `<code>${esc(t)}</code>`).join(', ') + '.' : ''}</p>${p.homepage && p.homepage.startsWith('http') ? `<h2>Live</h2><p><a href="${esc(p.homepage)}" target="_blank" rel="noreferrer">${esc(p.homepage)}</a></p>` : ''}${related.length ? `<h2>Write-up</h2><p>${related.map((x) => `<a href="/blogs/${slug(x.slug)}">${esc(x.title)}</a>`).join('')}</p>` : ''}</div></article>`
 }
 
 export function blogDetail(x) {
-  return `<article class="article blog-detail"><header class="article-head" data-motion="article"><h1 class="article-title">${esc(x.title)}</h1><div class="article-meta"><span class="article-meta-item">${I.cal}<time class="article-date-long">${dateFmt(x.date)}</time><time class="article-date-short">${dateFmt(x.date)}</time></span><span class="article-meta-item">${I.clock}${esc(x.read)}</span><button class="article-share-trigger" type="button" data-share="${esc(SITE.baseUrl)}/blog/${slug(x.slug)}">${I.share}<span>Share</span></button></div></header><div class="article-cover" data-motion="article"><img class="article-cover-img" alt="${esc(x.title)}" src="${cover(x.category)}"/></div><div class="article-body">${x.body}</div></article>`
+  const chips = [
+    detailChip(dateFmt(x.date)),
+    detailChip(esc(x.read)),
+    detailChip(esc(CATEGORIES[x.category] || x.category)),
+    `<button class="detail-chip article-share-trigger" type="button" data-share="${esc(SITE.baseUrl)}/blogs/${slug(x.slug)}">${I.share}<span>Share</span></button>`,
+  ]
+  return `<article class="article blog-detail">${breadcrumb('Blogs')}<header class="section-head work-head" data-motion="article"><div><h1 class="work-heading">${esc(x.title)}</h1></div><p><em>${esc(x.summary)}</em></p><div class="detail-meta">${chips.join('')}</div></header><div class="article-body">${x.body}</div></article>`
 }
 
 // ---------- about ----------
@@ -160,11 +182,11 @@ function catDesc(k) {
 
 // ---------- feeds ----------
 export function rss() {
-  const items = ALL_POSTS.slice(0, 20).map((x) => `<item><title>${esc(x.title)}</title><link>${SITE.baseUrl}/blog/${slug(x.slug)}</link><guid>${SITE.baseUrl}/blog/${slug(x.slug)}</guid><pubDate>${new Date(x.date + 'T00:00:00Z').toUTCString()}</pubDate><description>${esc(x.summary)}</description></item>`).join('')
+  const items = ALL_POSTS.slice(0, 20).map((x) => `<item><title>${esc(x.title)}</title><link>${SITE.baseUrl}/blogs/${slug(x.slug)}</link><guid>${SITE.baseUrl}/blogs/${slug(x.slug)}</guid><pubDate>${new Date(x.date + 'T00:00:00Z').toUTCString()}</pubDate><description>${esc(x.summary)}</description></item>`).join('')
   return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>${esc(SITE.name)}</title><link>${SITE.baseUrl}</link><description>${esc(SITE.description)}</description><atom:link href="${SITE.baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>${items}</channel></rss>`
 }
 
 export function sitemap() {
-  const urls = [SITE.baseUrl + '/', SITE.baseUrl + '/about', SITE.baseUrl + '/projects', ...PROJECTS.map((p) => SITE.baseUrl + '/projects/' + slug(p.name)), SITE.baseUrl + '/blogs', ...ALL_POSTS.map((x) => SITE.baseUrl + '/blog/' + slug(x.slug))]
+  const urls = [SITE.baseUrl + '/', SITE.baseUrl + '/about', SITE.baseUrl + '/projects', ...PROJECTS.map((p) => SITE.baseUrl + '/projects/' + slug(p.name)), SITE.baseUrl + '/blogs', ...ALL_POSTS.map((x) => SITE.baseUrl + '/blogs/' + slug(x.slug))]
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${esc(u)}</loc></url>`).join('\n')}\n</urlset>`
 }

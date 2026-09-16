@@ -86,6 +86,10 @@ app.get('/api/github-contributions', async (c) => {
   return c.json(data, 200, { 'cache-control': 'public, max-age=300' })
 })
 
+// legacy /blog/* URLs -> /blogs/*
+app.get('/blog', (c) => c.redirect('/blogs', 301))
+app.get('/blog/:slug', (c) => c.redirect(`/blogs/${c.req.param('slug')}`, 301))
+
 app.all('*', async (c) => {
   let res = await c.env.ASSETS.fetch(c.req.raw)
 

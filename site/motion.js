@@ -14,7 +14,6 @@ const CONF = {
   github:      { from: { opacity: 0, ...T('translateY(20px)') },   to: { opacity: 1, ...T('translateY(0px)') },   d: 0.6, e: E22 },
   article:     { from: { opacity: 0, ...T('translateY(20px)') },   to: { opacity: 1, ...T('translateY(0px)') },   d: 0.6, e: E22 },
   card:        { from: { opacity: 0, ...T('translateY(20px)') },   to: { opacity: 1, ...T('translateY(0px)') },   d: 0.5, e: E22 },
-  bento:       { from: { opacity: 0, ...T('translateY(20px)') },   to: { opacity: 1, ...T('translateY(0px)') },   d: 0.5, e: E22 },
   dock:        { from: { opacity: 0, ...T('translateY(16px) scale(0.85)') }, to: { opacity: 1, ...T('translateY(0px) scale(1)') }, d: 0.5, e: E22 },
 };
 

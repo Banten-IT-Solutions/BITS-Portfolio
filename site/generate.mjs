@@ -31,7 +31,7 @@ if (!FIRST) rmSync(PUBLIC, { recursive: true, force: true }); FIRST = false
 mkdirSync(new URL('assets/', PUBLIC), { recursive: true })
 
 // css
-copyFileSync(new URL('chunk.css', STATIC), new URL('assets/app.css', PUBLIC))
+copyFileSync(new URL('app.css', STATIC), new URL('assets/app.css', PUBLIC))
 copyFileSync(new URL('overrides.css', STATIC), new URL('assets/overrides.css', PUBLIC))
 // platform logos, tool icons, covers, misc svg
 copyDir(new URL('platform/', STATIC), new URL('assets/platform/', PUBLIC))
@@ -76,7 +76,7 @@ write('about/index.html', page(`About | ${SITE.name}`, `About ${SITE.name}, ${SI
 write('projects/index.html', page('Projects | ' + SITE.name, 'All projects by ' + SITE.name, '/projects', projectsIndex()))
 for (const p of PROJECTS) write('projects/' + slug(p.name) + '/index.html', page(`${p.name} | ${SITE.name}`, p.description, '/projects/' + slug(p.name), projectDetail(p)))
 write('blogs/index.html', page('Blogs | ' + SITE.name, 'Blog by ' + SITE.name, '/blogs', blogsIndex()))
-for (const x of ALL_POSTS) write('blog/' + slug(x.slug) + '/index.html', page(x.title, x.summary, '/blog/' + slug(x.slug), blogDetail(x), cover(x.category)))
+for (const x of ALL_POSTS) write('blogs/' + slug(x.slug) + '/index.html', page(x.title, x.summary, '/blogs/' + slug(x.slug), blogDetail(x), cover(x.category)))
 write('404.html', page('404 | ' + SITE.name, 'Page not found', '/404', `<section class="section"><h1>404</h1><p class="muted">This page could not be found.</p></section>`))
 write('feed.xml', rss())
 write('sitemap.xml', sitemap())

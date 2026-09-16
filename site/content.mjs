@@ -99,7 +99,7 @@ export const PROJECTS = [
     name: 'ngonten.bits.co.id', owner: 'bitscoid', private: true, language: 'Svelte', stars: 1,
     description: 'Social media scheduling, publishing, and analytics across multiple platforms — public marketing site, user panel, admin panel, subscription billing, media library, scheduled publishing engine, analytics, and team workspaces.',
     topics: ['svelte', 'sveltekit', 'social-media', 'scheduling', 'billing', 'analytics', 'saas'],
-    homepage: 'https://ngonten.bits.co.id', category: 'web', highlight: true,
+    homepage: 'https://ngonten.bits.co.id', category: 'web',
   },
   {
     name: 'malesngoding.my.id', owner: 'bitscoid', private: true, language: 'TypeScript', stars: 0,
@@ -109,7 +109,7 @@ export const PROJECTS = [
   {
     name: 'BITS-Portfolio', owner: 'Banten-IT-Solutions', private: false, language: 'TypeScript', stars: 0,
     description: 'BITS Personal Portfolio — static site served from Hono on Cloudflare Workers, GitHub contributions API, static site generator.',
-    topics: ['cloudflare-workers', 'hono', 'portfolio', 'static-site', 'typescript'], homepage: 'https://bits.co.id', category: 'web', highlight: true,
+    topics: ['cloudflare-workers', 'hono', 'portfolio', 'static-site', 'typescript'], homepage: 'https://bits.co.id', category: 'web',
   },
 
   // ---------- Banten-IT-Solutions ----------
@@ -117,19 +117,19 @@ export const PROJECTS = [
     name: 'BITS-VPN-Cloudflare', owner: 'Banten-IT-Solutions', private: false, language: 'TypeScript', stars: 26,
     description: 'High-performance Serverless VPN Relay for VLESS, VMess, and Trojan over Cloudflare Workers.',
     topics: ['bun', 'cloudflare-workers', 'hono', 'proxy', 'serverless', 'singbox', 'trojan', 'typescript', 'v2ray', 'vless', 'vmess', 'vpn', 'websocket'],
-    homepage: 'https://yuliana.my.id', category: 'networking', highlight: true,
+    homepage: 'https://yuliana.my.id', category: 'networking',
   },
   {
     name: 'BITS-Box', owner: 'Banten-IT-Solutions', private: false, language: 'Kotlin', stars: 1,
     description: 'Multi-protocol proxy / VPN client for Android powered by sing-box kernel.',
     topics: ['android', 'android-vpn', 'kotlin', 'proxy', 'shadowsocks', 'sing-box', 'trojan', 'v2ray', 'vpn'],
-    homepage: 'https://bits.co.id', category: 'networking', highlight: true,
+    homepage: 'https://bits.co.id', category: 'networking',
   },
   {
     name: 'BITS-WRT', owner: 'Banten-IT-Solutions', private: false, language: 'Shell', stars: 0,
     description: 'Custom OpenWrt firmware (BITS-WRT) for Amlogic routers — ImageBuilder build with tunneling (OpenClash/Nikki/Momo), Tailscale/Cloudflare, Docker, and a modern BITS LuCI theme.',
     topics: ['amlogic', 'arm64', 'custom-firmware', 'docker', 'firmware', 'github-actions', 'luci', 'mihomo', 'openclash', 'openwrt', 'router', 'sing-box', 'tailscale', 'vpn'],
-    homepage: 'https://bits.co.id', category: 'router', highlight: true,
+    homepage: 'https://bits.co.id', category: 'router',
   },
   {
     name: 'BITS-Theme', owner: 'Banten-IT-Solutions', private: false, language: 'CSS', stars: 2,
@@ -177,7 +177,7 @@ export const PROJECTS = [
     name: 'BITS-Mail-Cloudflare', owner: 'Banten-IT-Solutions', private: false, language: 'Vue', stars: 1,
     description: 'Temporary email platform on Cloudflare Workers — single-worker API + frontend, D1, Telegram, Turnstile, and AI extraction.',
     topics: ['cloudflare', 'cloudflare-d1', 'cloudflare-email-routing', 'cloudflare-kv', 'cloudflare-workers', 'email', 'hono', 'mail-parser', 'sqlite', 'telegram-bot', 'temp-mail', 'turnstile', 'vite', 'vue', 'workers-ai'],
-    homepage: 'https://mail.bits.co.id', category: 'web', highlight: true,
+    homepage: 'https://mail.bits.co.id', category: 'web',
   },
   {
     name: 'BITS-Nota', owner: 'Banten-IT-Solutions', private: true, language: 'TypeScript', stars: 1,
@@ -192,10 +192,10 @@ export const PROJECTS = [
     homepage: 'https://social.bits.co.id', category: 'web',
   },
   {
-    name: 'BITS-Smart-Masjid', owner: 'Banten-IT-Solutions', private: true, language: 'Svelte', stars: 1,
+    name: 'BITS-Smart-Masjid', owner: 'Banten-IT-Solutions', private: true, language: 'Go', stars: 1,
     description: 'Offline-first smart mosque display platform — prayer times, signage, media playback & SaaS licensing.',
     topics: ['android', 'cloudflare', 'cloudflare-workers', 'd1', 'go', 'islamic', 'monorepo', 'mosque', 'offline-first', 'pnpm', 'prayer', 'prayer-times', 'raspberry-pi', 'sqlite', 'svelte', 'sveltekit', 'tailwindcss', 'typescript'],
-    homepage: 'https://masjid.bits.co.id', category: 'web', highlight: true,
+    homepage: 'https://masjid.bits.co.id', category: 'web',
   },
   {
     name: 'BITS-Pay', owner: 'Banten-IT-Solutions', private: false, language: 'TypeScript', stars: 1,
@@ -207,7 +207,7 @@ export const PROJECTS = [
     name: 'BITS-QRIS-Converter', owner: 'Banten-IT-Solutions', private: false, language: 'TypeScript', stars: 2,
     description: 'QRIS Static → Dynamic converter — parse, validate, convert + cetak gambar struk. Hybrid of qris-dinamis + Dynamic-QRIS template engine.',
     topics: ['cloudflare', 'dynamic-qris', 'emvco', 'gpn', 'hono', 'indonesia', 'payment', 'pwa', 'qrcode', 'qris', 'qris-converter', 'struk', 'typescript', 'vite', 'workers'],
-    homepage: 'https://qris.bits.co.id', category: 'payments', highlight: true,
+    homepage: 'https://qris.bits.co.id', category: 'payments',
   },
   {
     name: 'BITS-YouTube-Automation', owner: 'Banten-IT-Solutions', private: false, language: 'Python', stars: 1,
@@ -275,7 +275,6 @@ export const PROJECTS = [
   },
 ]
 
-// slug helper (shared in utils.mjs)
 
 export const POSTS = PROJECTS.map((p, i) => {
   const flows = {
@@ -506,5 +505,5 @@ export const ROUNDUPS = [
 
 // derived collections (newest first)
 export const ALL_POSTS = [...ROUNDUPS, ...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1))
-export const FEATURED = [...PROJECTS].filter((p) => p.highlight).sort((a, b) => b.stars - a.stars).slice(0, 3)
+export const FEATURED = ['BITS-Smart-Masjid', 'BITS-YouTube-Automation', 'BITS-QRIS-Converter', 'BITS-Box', 'BITS-Networks-Bot'].map((n) => PROJECTS.find((p) => p.name === n)).filter(Boolean)
 export const FEATURED_POSTS = ALL_POSTS.slice(0, 5)
