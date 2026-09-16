@@ -1,6 +1,7 @@
 // Nurul Imam — build pipeline. Run: `node site/generate.mjs`
 // Copies static assets into public/, then writes every page + feed.
 import { mkdirSync, writeFileSync, copyFileSync, rmSync, readdirSync, statSync, watch } from 'node:fs'
+import sharp from 'sharp'
 import { SITE, PROJECTS, ALL_POSTS } from './content.mjs'
 import { slug, cover } from './utils.mjs'
 import { page, home, about, projectsIndex, blogsIndex, projectDetail, blogDetail, rss, sitemap } from './templates.mjs'
@@ -25,7 +26,7 @@ function copyDir(src, dest) {
 }
 
 let FIRST = true
-function generate() {
+async function generate() {
 if (!FIRST) rmSync(PUBLIC, { recursive: true, force: true }); FIRST = false
 mkdirSync(new URL('assets/', PUBLIC), { recursive: true })
 
@@ -37,12 +38,12 @@ copyDir(new URL('platform/', STATIC), new URL('assets/platform/', PUBLIC))
 copyDir(new URL('tools/', STATIC), new URL('assets/tools/', PUBLIC))
 copyDir(new URL('covers/', STATIC), new URL('assets/covers/', PUBLIC))
 copyFileSync(new URL('github.svg', STATIC), new URL('assets/github.svg', PUBLIC))
-// portrait/identity/metadata/og — all derived from avatar
-copyFileSync(new URL('images/avatar.webp', STATIC), new URL('assets/avatar.webp', PUBLIC))
-const av = 'images/avatar.webp'
-copyFileSync(new URL(av, STATIC), new URL('assets/metadata.webp', PUBLIC))
-copyFileSync(new URL(av, STATIC), new URL('assets/og.webp', PUBLIC))
-copyFileSync(new URL(av, STATIC), new URL('assets/identity.webp', PUBLIC))
+// portrait/identity/metadata/og — all derived from avatar with appropriate sizes
+const img = (name) => new URL('images/' + name, STATIC).pathname
+await sharp(img('avatar.webp')).toFile(new URL('assets/avatar.webp', PUBLIC).pathname)
+await sharp(img('avatar.webp')).resize(768, 768).toFile(new URL('assets/identity.webp', PUBLIC).pathname)
+await sharp(img('avatar.webp')).resize(512, 512).toFile(new URL('assets/metadata.webp', PUBLIC).pathname)
+await sharp(img('avatar.webp')).resize(1200, 630).toFile(new URL('assets/og.webp', PUBLIC).pathname)
 // client js
 copyFileSync(new URL('app.js', SITEDIR), new URL('assets/app.js', PUBLIC))
 copyFileSync(new URL('motion.js', SITEDIR), new URL('assets/motion.js', PUBLIC))
@@ -64,17 +65,17 @@ console.log(`Generated ${ALL_POSTS.length} posts, ${PROJECTS.length}.`)
 }
 
 // first run
-generate()
+await generate()
 
 // watch
 if (process.argv.includes('--watch')) {
   const dirs = [SITEDIR.pathname, STATIC.pathname]
   console.log('Watching site/ for changes...')
   for (const dir of dirs) {
-    watch(dir, { recursive: true }, (_, fn) => {
+    watch(dir, { recursive: true }, async (_, fn) => {
       if (fn?.startsWith('.')) return
       console.log(`Change: ${fn}, regenerating...`)
-      try { generate() } catch (e) { console.error('Regen error:', e) }
+      try { await generate() } catch (e) { console.error('Regen error:', e) }
     })
   }
 }

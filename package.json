@@ -10,7 +10,8 @@
     "deploy": "node site/generate.mjs && wrangler deploy"
   },
   "dependencies": {
-    "hono": "^4.13.8"
+    "hono": "^4.13.8",
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "wrangler": "^4.132.0"
