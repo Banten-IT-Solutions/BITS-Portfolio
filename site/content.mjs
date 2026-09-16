@@ -1,4 +1,5 @@
 // Nurul Imam — central content data. Edit this file, run `node site/generate.mjs`.
+import { esc, slug, repoUrl } from './utils.mjs'
 
 export const SITE = {
   name: 'Nurul Imam',
@@ -54,6 +55,24 @@ export const CATEGORIES = {
 
 // owner filter set for the projects page
 export const OWNERS = ['bitscoid', 'Banten-IT-Solutions', 'BITS-Cloud-Platform', 'BITS-Client', 'BITS-Labs']
+
+// tools shown in the dock (home). `inv` adds an invert class in light/dark mode.
+export const TOOLS = [
+  { n: 'VS Code', f: 'VSCode.svg', inv: '' },
+  { n: 'Cursor', f: 'Cursor.svg', inv: 'invert-in-light' },
+  { n: 'Claude Code', f: 'Claude Code.svg', inv: '' },
+  { n: 'Docker', f: 'Docker.svg', inv: 'invert-in-dark' },
+  { n: 'Figma', f: 'Figma.svg', inv: '' },
+  { n: 'Notion', f: 'Notion.svg', inv: 'invert-in-dark' },
+  { n: 'Obsidian', f: 'Obsidian.svg', inv: '' },
+  { n: 'Termius', f: 'Termius.svg', inv: 'invert-in-dark' },
+  { n: 'Brave', f: 'Brave Origin.svg', inv: '' },
+  { n: 'Codex', f: 'Codex.svg', inv: '' },
+  { n: 'Kiro', f: 'Kiro.svg', inv: 'invert-in-dark' },
+  { n: 'Bitwarden', f: 'Bitwarden.svg', inv: '' },
+  { n: 'Discord', f: 'Discord.svg', inv: '' },
+  { n: 'VSCode', f: 'VSCode.svg', inv: '' },
+]
 
 export const PROJECTS = [
   // ---------- bitscoid (personal) ----------
@@ -258,10 +277,7 @@ export const PROJECTS = [
   },
 ]
 
-// slug helper (kept in content so generate.mjs can reuse without own copy)
-export function slugify(s) {
-  return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
-}
+// slug helper (shared in utils.mjs)
 
 export const POSTS = PROJECTS.map((p, i) => {
   const flows = {
@@ -303,7 +319,7 @@ export const POSTS = PROJECTS.map((p, i) => {
   }
   const f = flows[p.category] || flows.web
   return {
-    slug: slugify(p.name),
+    slug: slug(p.name),
     title: titleFor(p),
     category: p.category,
     project: p.name,
@@ -337,10 +353,6 @@ function titleFor(p) {
   return map[p.name] || p.name
 }
 
-function repoUrl(p) {
-  return `https://github.com/${p.owner}/${p.name}`
-}
-
 // deterministic spread of dates, newest first, ending recent (site "today" ~ Sep 2026)
 function dateFor(i) {
   const base = new Date('2026-08-28T00:00:00Z')
@@ -354,11 +366,6 @@ function readFor(p) {
   return min + ' Min Read'
 }
 
-function fmtDate(iso) {
-  const d = new Date(iso + 'T00:00:00Z')
-  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-}
-
 function compose(p, f) {
   const stack = p.language ? `<p><strong>Stack.</strong> Built with ${esc(p.language)}${p.topics.length ? ' — ' + p.topics.slice(0, 6).map((t) => `<code>${esc(t)}</code>`).join(', ') : ''}.</p>` : ''
   return `
@@ -370,10 +377,6 @@ ${stack}
 <p>Each <code>${esc(p.name)}</code> piece is deliberately narrow: it does one job and leaves the rest on an existing, proven path. That keeps upgrades contained and makes the project easy to reason about in production.</p>
 <blockquote>${f.take}</blockquote>
 `
-}
-
-function esc(s) {
-  return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
 }
 
 // ---- thematic roundup posts (7) ----
@@ -502,3 +505,8 @@ export const ROUNDUPS = [
 `,
   },
 ]
+
+// derived collections (newest first)
+export const ALL_POSTS = [...ROUNDUPS, ...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1))
+export const FEATURED = [...PROJECTS].filter((p) => p.highlight).sort((a, b) => b.stars - a.stars).slice(0, 3)
+export const FEATURED_POSTS = ALL_POSTS.slice(0, 5)

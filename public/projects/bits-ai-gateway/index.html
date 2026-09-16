@@ -11,34 +11,10 @@
 [data-motion="portrait"]{opacity:0;transform:scale(.96)}
 [data-motion="sectionHead"],[data-motion="github"],[data-motion="article"],[data-motion="card"],[data-motion="bento"]{opacity:0;transform:translateY(20px)}
 [data-motion="dock"]{opacity:0;transform:translateY(16px) scale(.85)}
-.theme-trigger{width:36px;height:36px;color:var(--muted);cursor:pointer;border:0;border-radius:50%;justify-self:end;place-items:center;padding:0;transition:color .2s,transform .2s;display:grid;background:0 0!important}
-.theme-trigger:hover{color:var(--ink)}
-.theme-trigger .sun{display:none}
-.theme-trigger .moon{display:inline}
-html.dark .theme-trigger .sun{display:inline}
-html.dark .theme-trigger .moon{display:none}
-footer{border-top:1px solid var(--line);margin-top:40px}
-header.nav{background:var(--shell);border-bottom:1px solid var(--line)}
-:root{--font-sans:"Instrument Serif",Georgia,serif;--font-satoshi:"Instrument Serif",Georgia,serif;--font-display:"Instrument Serif",Georgia,serif}
-body,p{letter-spacing:.02em}
-nav nav{font-size:15px}
-.work.section{padding-top:48px}
-.braided-ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:6px;overflow:hidden;position:relative}
-.braided-ticker .ticker-row{height:40px;overflow:hidden;display:flex;align-items:center;-webkit-mask-image:linear-gradient(90deg,#0000,#000 7% 93%,#0000);mask-image:linear-gradient(90deg,#0000,#000 7% 93%,#0000)}
-.braided-ticker .ticker-row + .ticker-row{border-top:1px solid var(--line)}
-.braided-ticker .ticker-track{display:flex;align-items:center;width:max-content;height:100%;will-change:transform;flex:none}
-.braided-ticker .ticker-group{display:flex;align-items:center;flex:none}
-.braided-ticker .ticker-group span{white-space:nowrap;display:flex;align-items:center;gap:28px;padding-right:28px;font:9px var(--font-mono);text-transform:uppercase;color:var(--muted)}
-.braided-ticker .ticker-group i{flex:none;width:5px;height:5px;background:var(--ink);transform:rotate(45deg)}
-.braided-ticker .t2{opacity:.65}
-.braided-ticker .t1 .ticker-track{animation:42s linear infinite bfwd}
-.braided-ticker .t2 .ticker-track{animation:26s linear infinite brev}
-@keyframes bfwd{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes brev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@media (max-width:460px){.braided-ticker{margin-top:6px}.braided-ticker .ticker-row{height:32px}.braided-ticker .ticker-group span{gap:12px;padding-right:12px;font-size:8px}}
 </style>
 <noscript><style>[data-motion]{opacity:1!important;transform:none!important}</style></noscript>
 <link rel="stylesheet" href="/assets/app.css"/>
+<link rel="stylesheet" href="/assets/overrides.css"/>
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,400&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"/>
 <title>BITS-AI-Gateway | Nurul Imam</title>
