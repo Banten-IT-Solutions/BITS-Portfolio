@@ -68,7 +68,6 @@ export const TOOLS = [
   { n: 'Kiro', f: 'kiro.svg', inv: 'invert-in-dark' },
   { n: 'Bitwarden', f: 'bitwarden.svg', inv: '' },
   { n: 'Discord', f: 'discord.svg', inv: '' },
-  { n: 'VSCode', f: 'vscode.svg', inv: '' },
 ]
 
 export const PROJECTS = [

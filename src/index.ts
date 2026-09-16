@@ -47,29 +47,38 @@ function buildWeeks(raw: { date: string; count: number; level: number }[]): Cont
 }
 
 async function getContribs(): Promise<ContribResponse> {
-  let res: Response | undefined
   try {
-    res = await caches.default.match(API_URL)
-  } catch {
-    // caches.default unavailable (some local/dev sandboxes) -> fall through to fetch
-  }
-
-  if (!res) {
-    const upstream = await fetch(API_URL, { headers: { 'user-agent': 'nurulimam-com worker' } })
-    if (!upstream.ok) return { success: false, total: 0, weeks: [] }
-    const body = await upstream.text()
-    res = new Response(body, {
-      headers: { 'content-type': 'application/json', 'cache-control': `public, max-age=${TTL}` },
-    })
+    let res: Response | undefined
     try {
-      ;(async () => {
-        await caches.default.put(API_URL, res!.clone())
-      })().catch(() => {})
-    } catch {}
-  }
+      res = await caches.default.match(API_URL)
+    } catch {
+      // caches.default unavailable (some local/dev sandboxes) -> fetch fresh
+    }
 
-  const json = (await res.json()) as { contributions?: { date: string; count: number; level: number }[] }
-  return buildWeeks(json.contributions ?? [])
+    if (!res) {
+      const upstream = await fetch(API_URL, {
+        headers: { 'user-agent': 'nurulimam-com worker' },
+        signal: AbortSignal.timeout(5000),
+      })
+      if (!upstream.ok) return { success: false, total: 0, weeks: [] }
+      const body = await upstream.text()
+      if (body.length > 1_000_000) return { success: false, total: 0, weeks: [] } // ponytail: cap oversized mirror responses
+      res = new Response(body, {
+        headers: { 'content-type': 'application/json', 'cache-control': `public, max-age=${TTL}` },
+      })
+      try {
+        ;(async () => {
+          await caches.default.put(API_URL, res!.clone())
+        })().catch(() => {})
+      } catch {}
+    }
+
+    const json = (await res.json()) as { contributions?: { date: string; count: number; level: number }[] }
+    return buildWeeks(json.contributions ?? [])
+  } catch {
+    // upstream down / malformed / cached body bad -> degrade instead of 500
+    return { success: false, total: 0, weeks: [] }
+  }
 }
 
 app.get('/api/github-contributions', async (c) => {

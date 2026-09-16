@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "gen": "node site/generate.mjs",
-    "deploy": "wrangler deploy"
+    "deploy": "node site/generate.mjs && wrangler deploy"
   },
   "dependencies": {
     "hono": "^4.9.4"

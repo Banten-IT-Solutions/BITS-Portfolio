@@ -18,7 +18,6 @@ function write(path, content) {
 function copyDir(src, dest) {
   mkdirSync(dest, { recursive: true })
   for (const e of readdirSync(src)) {
-    const s = new URL(e + '/', src).pathname.replace(/\/$/, '')
     const sFull = src.pathname + e
     if (statSync(sFull).isDirectory()) { copyDir(new URL(e + '/', src), new URL(e + '/', dest)); continue }
     copyFileSync(sFull, new URL(e, dest))

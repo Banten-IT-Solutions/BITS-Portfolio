@@ -23,7 +23,6 @@ function head(title, desc, path, img) {
 <noscript><style>[data-motion]{opacity:1!important;transform:none!important}</style></noscript>
 <link rel="stylesheet" href="/assets/app.css"/>
 <link rel="stylesheet" href="/assets/overrides.css"/>
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,400&display=swap"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"/>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}"/>
@@ -52,7 +51,7 @@ function head(title, desc, path, img) {
 }
 
 function nav() {
-  return `<header class="nav" data-motion="nav"><a class="brand" href="/" aria-label="${esc(SITE.name)}, home"><i></i><i></i><i></i></a><nav aria-label="Primary navigation"><a href="/about">About</a><a href="/projects">Projects</a><a href="/blogs">Blogs</a></nav><div class="nav-actions"><button class="theme-trigger" type="button" aria-label="Toggle theme">${sun}${moon}</button><button class="lang-trigger" type="button" aria-label="Language">${I.globe}</button><button class="mobile-menu-trigger" type="button" aria-label="Menu">${I.menu}</button></div></header>`
+  return `<header class="nav" data-motion="nav"><a class="brand" href="/" aria-label="${esc(SITE.name)}, home"><i></i><i></i><i></i></a><nav aria-label="Primary navigation"><a href="/about">About</a><a href="/projects">Projects</a><a href="/blogs">Blogs</a></nav><div class="nav-actions"><button class="theme-trigger" type="button" aria-label="Toggle theme">${sun}${moon}</button><button class="mobile-menu-trigger" type="button" aria-label="Menu">${I.menu}</button></div></header>`
 }
 
 function footer() {
@@ -67,7 +66,7 @@ export function page(title, desc, path, body, img) {
 // ---------- cards ----------
 function terminalCard(p, i = 0) {
   const tags = (p.topics || []).slice(0, 4)
-  return `<article class="terminal-repo-card" data-motion="card" data-motion-delay="${i * 80}" id="project-${p.name.toLowerCase()}"><div class="terminal-header"><div class="terminal-dots"><i></i><i></i><i></i></div></div><div class="terminal-body"><div class="terminal-title"><h3><a class="terminal-card-link" href="/projects/${slug(p.name)}">${esc(p.name)}</a></h3></div><p class="terminal-desc">${esc(p.description)}</p><div class="terminal-footer"><div class="terminal-tags">${tags.map((t) => `<span class="terminal-tag">${esc(t)}</span>`).join('')}</div></div></div><div class="terminal-card-actions"><a href="${esc(repoUrl(p))}" target="_blank" rel="noreferrer" class="terminal-card-action" aria-label="Open ${esc(p.name)} GitHub repository" title="Open ${esc(p.name)} GitHub repository" tabindex="0"><span aria-hidden="true"><i class="github-mark"></i></span></a><button type="button" class="terminal-card-action" aria-label="Share project ${esc(p.name)}" title="Share project" data-share="${esc(SITE.baseUrl)}/projects/${slug(p.name)}" tabindex="0">${I.share}</button></div></article>`
+  return `<article class="terminal-repo-card" data-motion="card" data-motion-delay="${i * 80}" id="project-${slug(p.name)}"><div class="terminal-header"><div class="terminal-dots"><i></i><i></i><i></i></div></div><div class="terminal-body"><div class="terminal-title"><h3><a class="terminal-card-link" href="/projects/${slug(p.name)}">${esc(p.name)}</a></h3></div><p class="terminal-desc">${esc(p.description)}</p><div class="terminal-footer"><div class="terminal-tags">${tags.map((t) => `<span class="terminal-tag">${esc(t)}</span>`).join('')}</div></div></div><div class="terminal-card-actions"><a href="${esc(repoUrl(p))}" target="_blank" rel="noreferrer" class="terminal-card-action" aria-label="Open ${esc(p.name)} GitHub repository" title="Open ${esc(p.name)} GitHub repository" tabindex="0"><span aria-hidden="true"><i class="github-mark"></i></span></a><button type="button" class="terminal-card-action" aria-label="Share project ${esc(p.name)}" title="Share project" data-share="${esc(SITE.baseUrl)}/projects/${slug(p.name)}" tabindex="0">${I.share}</button></div></article>`
 }
 
 function bentoCard(x, cls, i = 0) {
