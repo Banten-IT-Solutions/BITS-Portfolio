@@ -101,14 +101,14 @@ npm run deploy
 
 ### Environment Variables
 
-Secrets required for deployment:
+Secrets required for deployment — lihat `.env.example` untuk referensi:
 
 | Variable                | Description         |
 | ----------------------- | ------------------- |
-| `CLOUDFLARE_API_TOKEN`  | Cloudflare API token with Workers permissions |
+| `CLOUDFLARE_API_TOKEN`  | Cloudflare API token dengan Workers permissions |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 
-Set via `wrangler secret put` or GitHub Actions secrets.
+Set via GitHub Secrets → Settings → Secrets and variables → Actions.
 
 ---
 
