@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "hono": "^4.13.13",
-    "sharp": "^0.35.4"
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "wrangler": "^4.139.0"
+    "wrangler": "^4.149.0"
   }
 }
